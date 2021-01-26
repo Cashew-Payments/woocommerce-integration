@@ -66,8 +66,7 @@ abstract class WC_Cashewpayments_Gateway extends WC_Payment_Gateway {
 	public function is_available() {
 		return (
 			parent::is_available() &&
-			! empty( $this->get_option( 'merchant_id' ) ) &&
-			! empty( $this->get_secret_key() )
+			! empty( $this->get_api_key() )
 		);
 	}
 
@@ -76,8 +75,8 @@ abstract class WC_Cashewpayments_Gateway extends WC_Payment_Gateway {
 	 *
 	 * @return string
 	 */
-	public function get_secret_key() {
-		return $this->sandbox ? $this->get_option( 'sandbox_secret_key' ) : $this->get_option( 'secret_key' );
+	public function get_api_key() {
+		return $this->get_option( 'api_key' );
 	}
 
 	/**

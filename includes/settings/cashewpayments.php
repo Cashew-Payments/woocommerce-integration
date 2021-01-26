@@ -33,13 +33,6 @@ return array(
 		'default'     => '',
 		'desc_tip'    => true,
 	),
-	'api_domain'             => array(
-		'title'       => __( 'API Domain', 'cashewpayments' ),
-		'type'        => 'text',
-		'description' => __( 'Get your secret Key from Cashewpayments.', 'cashewpayments' ),
-		'default'     => '',
-		'desc_tip'    => true,
-	),
 	'api_key'     => array(
 		'title'       => __( 'Api key', 'cashewpayments' ),
 		'type'        => 'password',
@@ -61,7 +54,7 @@ return array(
 		'default'     => 'yes',
 		'description' => __( 'Checkout flow that keeps customers local to your website.', 'cashewpayments' ),
 	),
-	'theme'                  => array(
+	'api_domain'                  => array(
 		'title'       => __( 'Environment', 'cashewpayments' ),
 		'type'        => 'select',
 		'desc_tip'    => true,
