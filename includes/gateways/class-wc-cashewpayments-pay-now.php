@@ -21,8 +21,8 @@ final class WC_Cashewpayments_Pay_Now extends WC_Cashewpayments_Gateway {
 	 * Constructor.
 	 */
 	public function __construct() {
-		$this->id                 = WC_Cashewpayments::PAYMENT_GATEWAY_ID . '-pay-now';
-		$this->method_title       = __( 'Cashewpayments Pay Now', 'cashewpayments' );
+		$this->id                 = WC_Cashewpayments::PAYMENT_GATEWAY_ID;
+		$this->method_title       = __( 'Cashewpayments', 'cashewpayments' );
 		$this->method_description = __( 'Accept payments using credit and debit cards.', 'cashewpayments' );
 		$this->order_button_text  = __( 'Pay Now', 'cashewpayments' );
 		$this->icon               = WC_CASHEWPAYMENTS_DIR_URL . 'assets/images/' . $this->id . '.png';
