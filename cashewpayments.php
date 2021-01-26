@@ -95,7 +95,7 @@ class WC_Cashewpayments {
 		include_once WC_CASHEWPAYMENTS_DIR_PATH . 'includes/gateways/class-wc-cashewpayments-gateway.php';
 		include_once WC_CASHEWPAYMENTS_DIR_PATH . 'includes/gateways/class-wc-cashewpayments.php';
 
-		array_push( $methods, 'WC_Cashewpayments_Pay_Now', 'WC_Cashewpayments_Split_Payment' );
+		array_push( $methods, 'WC_Cashewpayments' );
 		return $methods;
 	}
 
