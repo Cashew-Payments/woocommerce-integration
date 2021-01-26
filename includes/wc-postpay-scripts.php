@@ -7,7 +7,7 @@ defined( 'ABSPATH' ) || exit;
 
 return array(
 	'wc-postpay-js'       => array(
-		'src'     => 'https://cdn.postpay.io/v1/js/postpay.js',
+		'src'     => 'https://cdn-dev.cashewpayments.com/shopify.widget.min.js',
 		'deps'    => array(),
 		'version' => WC_POSTPAY_VERSION,
 	),
