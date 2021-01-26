@@ -5,6 +5,8 @@
 /* global wc_postpay_init_params */
 jQuery( document ).ready(
 	function( $ ) {
-		postpay.init( wc_postpay_init_params );
+		if (window.cashew) {
+			window.cashew.init( wc_postpay_init_params );
+		}
 	}
 );
