@@ -4,12 +4,12 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitedced5e8c6bf1ee11d0a96e5d8ae1f96
+class ComposerStaticInit35361e866813e1f773c8bd2a5ec3d227
 {
     public static $prefixLengthsPsr4 = array (
         'P' => 
         array (
-            'Cashewpayments\\' => 8,
+            'Postpay\\' => 8,
         ),
         'C' => 
         array (
@@ -18,9 +18,9 @@ class ComposerStaticInitedced5e8c6bf1ee11d0a96e5d8ae1f96
     );
 
     public static $prefixDirsPsr4 = array (
-        'Cashewpayments\\' => 
+        'Postpay\\' => 
         array (
-            0 => __DIR__ . '/..' . '/cashewpayments/cashewpayments-php/src',
+            0 => __DIR__ . '/..' . '/postpay/postpay-php/src',
         ),
         'Composer\\Installers\\' => 
         array (
@@ -31,8 +31,8 @@ class ComposerStaticInitedced5e8c6bf1ee11d0a96e5d8ae1f96
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInitedced5e8c6bf1ee11d0a96e5d8ae1f96::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInitedced5e8c6bf1ee11d0a96e5d8ae1f96::$prefixDirsPsr4;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit35361e866813e1f773c8bd2a5ec3d227::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit35361e866813e1f773c8bd2a5ec3d227::$prefixDirsPsr4;
 
         }, null, ClassLoader::class);
     }

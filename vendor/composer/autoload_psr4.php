@@ -6,6 +6,6 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'Cashewpayments\\' => array($vendorDir . '/cashewpayments/cashewpayments-php/src'),
+    'Postpay\\' => array($vendorDir . '/postpay/postpay-php/src'),
     'Composer\\Installers\\' => array($vendorDir . '/composer/installers/src/Composer/Installers'),
 );

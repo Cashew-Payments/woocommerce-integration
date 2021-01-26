@@ -1,6 +1,6 @@
 <?php
 /**
- * Cashewpayments payment fields.
+ * Postpay payment fields.
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -10,7 +10,7 @@ defined( 'ABSPATH' ) || exit;
 	<div
 		class="<?php echo $gateway->id; // phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped ?>-widget"
 		data-type="payment-summary"
-		data-amount="<?php echo WC_Cashewpayments_Adapter::decimal( WC()->cart->total )->jsonSerialize(); // phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped ?>"
+		data-amount="<?php echo WC_Postpay_Adapter::decimal( WC()->cart->total )->jsonSerialize(); // phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped ?>"
 		data-currency="<?php echo get_woocommerce_currency(); // phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped ?>"
 		data-country="<?php echo WC()->customer->get_billing_country(); // phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped ?>"
 		data-locale="<?php echo get_locale(); // phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped ?>"
@@ -26,7 +26,7 @@ defined( 'ABSPATH' ) || exit;
 	<script>
 	jQuery( document ).ready(
 		function( $ ) {
-			cashewpayments.ui.refresh( '.<?php echo $gateway->id; // phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped ?>-widget' );
+			postpay.ui.refresh( '.<?php echo $gateway->id; // phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped ?>-widget' );
 		}
 	);
 	</script>

@@ -1,34 +1,31 @@
 [
     {
         "name": "composer/installers",
-        "version": "v1.9.0",
-        "version_normalized": "1.9.0.0",
+        "version": "v1.8.0",
+        "version_normalized": "1.8.0.0",
         "source": {
             "type": "git",
             "url": "https://github.com/composer/installers.git",
-            "reference": "b93bcf0fa1fccb0b7d176b0967d969691cd74cca"
+            "reference": "7d610d50aae61ae7ed6675e58efeabdf279bb5e3"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/composer/installers/zipball/b93bcf0fa1fccb0b7d176b0967d969691cd74cca",
-            "reference": "b93bcf0fa1fccb0b7d176b0967d969691cd74cca",
+            "url": "https://api.github.com/repos/composer/installers/zipball/7d610d50aae61ae7ed6675e58efeabdf279bb5e3",
+            "reference": "7d610d50aae61ae7ed6675e58efeabdf279bb5e3",
             "shasum": ""
         },
         "require": {
-            "composer-plugin-api": "^1.0 || ^2.0"
+            "composer-plugin-api": "^1.0"
         },
         "replace": {
             "roundcube/plugin-installer": "*",
             "shama/baton": "*"
         },
         "require-dev": {
-            "composer/composer": "1.6.* || 2.0.*@dev",
-            "composer/semver": "1.0.* || 2.0.*@dev",
-            "phpunit/phpunit": "^4.8.36",
-            "sebastian/comparator": "^1.2.4",
-            "symfony/process": "^2.3"
+            "composer/composer": "1.0.*@dev",
+            "phpunit/phpunit": "^4.8.36"
         },
-        "time": "2020-04-07T06:57:05+00:00",
+        "time": "2020-02-07T10:39:20+00:00",
         "type": "composer-plugin",
         "extra": {
             "class": "Composer\\Installers\\Plugin",
@@ -129,17 +126,17 @@
         ]
     },
     {
-        "name": "cashewpayments/cashewpayments-php",
+        "name": "postpay/postpay-php",
         "version": "0.0.4",
         "version_normalized": "0.0.4.0",
         "source": {
             "type": "git",
-            "url": "https://github.com/cashewpaymentsio/cashewpayments-php.git",
+            "url": "https://github.com/postpayio/postpay-php.git",
             "reference": "495d1eed6c12aaceceebae029f8961bbbdb04978"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/cashewpaymentsio/cashewpayments-php/zipball/495d1eed6c12aaceceebae029f8961bbbdb04978",
+            "url": "https://api.github.com/repos/postpayio/postpay-php/zipball/495d1eed6c12aaceceebae029f8961bbbdb04978",
             "reference": "495d1eed6c12aaceceebae029f8961bbbdb04978",
             "shasum": ""
         },
@@ -159,7 +156,7 @@
         "installation-source": "dist",
         "autoload": {
             "psr-4": {
-                "Cashewpayments\\": "src/"
+                "Postpay\\": "src/"
             }
         },
         "notification-url": "https://packagist.org/downloads/",
@@ -169,18 +166,18 @@
         "authors": [
             {
                 "name": "mongkok",
-                "email": "dani@cashewpayments.io",
+                "email": "dani@postpay.io",
                 "homepage": "https://github.com/mongkok"
             }
         ],
-        "description": "Cashewpayments SDK for PHP",
-        "homepage": "https://github.com/cashewpaymentsio/cashewpayments-php",
+        "description": "Postpay SDK for PHP",
+        "homepage": "https://github.com/postpayio/postpay-php",
         "keywords": [
             "api",
             "client",
             "graphql",
             "payments",
-            "cashewpayments",
+            "postpay",
             "rest",
             "sdk"
         ]

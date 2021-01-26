@@ -2,9 +2,9 @@
  * Initializes In-Context Checkout.
  */
 
-/* global wc_cashewpayments_checkout_params */
+/* global wc_postpay_checkout_params */
 jQuery( document ).ready(
 	function( $ ) {
-		cashewpayments.checkout( wc_cashewpayments_checkout_params.token );
+		postpay.checkout( wc_postpay_checkout_params.token );
 	}
 );
