@@ -34,6 +34,6 @@ final class WC_Cashewpayments_Pay_Now extends WC_Cashewpayments_Gateway {
 	 * Initialise settings form fields.
 	 */
 	public function init_form_fields() {
-		$this->form_fields = include WC_CASHEWPAYMENTS_DIR_PATH . 'includes/settings/cashewpayments-pay-now.php';
+		$this->form_fields = include WC_CASHEWPAYMENTS_DIR_PATH . 'includes/settings/cashewpayments.php';
 	}
 }
