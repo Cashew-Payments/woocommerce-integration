@@ -40,9 +40,7 @@ class WC_Cashewpayments_Adapter {
 		if ( $this->gateway->is_available() ) {
 			$this->client = new Cashewpayments(
 				array(
-					'sandbox'        => $gateway->sandbox,
-					'merchant_id'    => $gateway->get_option( 'merchant_id' ),
-					'secret_key'     => $gateway->get_secret_key(),
+					'api_key'     => $gateway->get_api_key(),
 					'client_handler' => new WC_Cashewpayments_Client(),
 				)
 			);
@@ -62,6 +60,7 @@ class WC_Cashewpayments_Adapter {
 	 * @throws ApiException If response status code is invalid.
 	 */
 	public function request( $method, $path, $params = array() ) {
+		WC_Cashewpayments::log( wc_print_r( 'TEST', true ), 'debug' );
 		if ( ! $this->gateway->is_available() ) {
 			throw new Exception( __( 'Cashewpayments is not properly configured.', 'cashewpayments' ) );
 		}
