@@ -2,7 +2,8 @@
 /**
  * Process refunds
  */
-function processRefund($order_id, $amount = null, $reason = '', $th){
+function processRefund($order_id, $amount = null, $reason = '', $th)
+{
 
     $order = wc_get_order($order_id);
     $url = $th->api . 'orders/' . $order_id . '/refund';

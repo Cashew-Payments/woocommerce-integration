@@ -3,12 +3,13 @@
 * Process payments: magic begins here
 */
 
-function processPayment($order_id, $th, $type = null, $addon){
+function processPayment($order_id, $th, $type = null, $addon)
+{
     $lang = get_locale();
     $order = new WC_Order($order_id);
     $currency = $order->get_currency();
     $total=$order->get_total();
-    if($currency == "USD" ){
+    if($currency == "USD" ) {
         $total = $total * 3.6730;
     }
     $min = $th->order_min;
@@ -48,8 +49,8 @@ function processPayment($order_id, $th, $type = null, $addon){
 
         if (array_key_exists('token', $response_body_arr['data'])) {
             $redirect_url = $response_body_arr['data']['url'];
-            $order->update_meta_data( 'reference', $response_body_arr['data']['orderId'] );
-            $order->update_meta_data( 'token', $th->token );
+            $order->update_meta_data('reference', $response_body_arr['data']['orderId']);
+            $order->update_meta_data('token', $th->token);
             $order->save();
             return array('result' => 'success', 'redirect' => "", 'token' => $response_body_arr['data']['token'], 'storeToken' => $th->token, "checkout_url" => $redirect_url, "orderId" => $response_body_arr['data']['orderId'], "api" => $th->api,"cancelURL" => $order->get_cancel_order_url(), "sucessURL" => $order->get_checkout_order_received_url());
         } else {

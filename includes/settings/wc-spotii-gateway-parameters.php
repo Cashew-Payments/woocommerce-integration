@@ -2,7 +2,8 @@
 /*
 /* Plugin Parameters 
 */
-function gatewayParameters($th, $type = null){
+function gatewayParameters($th, $type = null)
+{
 
     $th->id = 'spotii_shop_now_pay_later';
     $type == "Shop Now Pay Later" ? $th->icon = 'https://spotii.me/img/logo.svg' : '';

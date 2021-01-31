@@ -1,8 +1,9 @@
 <?php
  /**
- * Called when Spotii checkout page redirects back to merchant page
- */
-function spotiiResponseHandler($th){
+  * Called when Spotii checkout page redirects back to merchant page
+  */
+function spotiiResponseHandler($th)
+{
     $lang = get_locale();
     $errorChe = $lang == 'ar' ? 'خطأ في تأكيد الطلب: ' : 'Checkout Error: ' ;
     $order_id = $_GET['o'];

@@ -3,7 +3,7 @@
  * Spotii functions
  */
 
-defined( 'ABSPATH' ) || exit;
+defined('ABSPATH') || exit;
 
 /*
 /* ADD WIDGETS, ENQUEUE NEEDED CSS AND JS
@@ -17,7 +17,8 @@ $lang = get_locale();
  * @param string     $handle Script handle the data will be attached to.
  * @param array|null $params Parameters injected.
  */
-function wc_spotii_script(){
+function wc_spotii_script()
+{
     wp_enqueue_style('spotii-gateway', plugin_dir_url(__FILE__) .  '../assets/css/spotii-checkout.css', true);
     if (is_checkout()) {
         wp_enqueue_script('cashew-checkout', 'https://s3-eu-west-1.amazonaws.com/cdn-dev.cashewpayments.com/widgets/woocommerce.checkout.min.js', array('jquery'), '0.01', true);
@@ -37,7 +38,8 @@ add_action('wp_enqueue_scripts', 'wc_spotii_script', 12);
 /*
 /* Add Lightbox html to footer
 */
-function spotii_footer(){
+function spotii_footer()
+{
     echo '
     <button style="display:none" id="closeclick">set overlay closeClick to false</button>                                
     <button style="display:none" id="closeiframebtn">set overlay closeClick to false</button>
@@ -51,7 +53,9 @@ add_action('wp_footer', 'spotii_footer');
 /*
 /* Admin js for hide and show sandbox fields
 */
-function admin_js() { ?>
+function admin_js()
+{
+    ?>
     <script type="text/javascript">
 
         jQuery(document).ready( function ($) { 
@@ -139,7 +143,8 @@ add_action('admin_head', 'admin_js');
 /*
 /* Update order status 
 */
-function spotii_order_update(){
+function spotii_order_update()
+{
     
     $order_id = isset($_POST["order_id"]) ? $_POST["order_id"] : "";
     $order_status = isset($_POST["status"]) ? $_POST["status"] : "";
@@ -150,7 +155,7 @@ function spotii_order_update(){
     $lang = get_locale();
     $errorChe = $lang == 'ar' ? 'خطأ في تأكيد الطلب: ' : 'Checkout Error: ' ;
 
-    if($order->has_status('completed') || $order->has_status('processing')){
+    if($order->has_status('completed') || $order->has_status('processing')) {
         $error = $lang == 'ar' ? "الطلب موجود بالفعل بحالة " .$order->get_status() : "Order already exist with ".$order->get_status()." status";
         wc_add_notice(__($errorChe, 'woothemes') . $error, 'error');
         $redirect_url = $order->get_checkout_order_received_url();
@@ -158,12 +163,12 @@ function spotii_order_update(){
         die;
     }
     $errorPaymentFailed = $lang == 'ar' ? "لقد حصل خطأ عند الدفع عن طريق سبوتي، رجاءً حاول مرة اخرى" : "Payment with Spotii failed. Please try again";
-    if(!empty($spotii_total)){
+    if(!empty($spotii_total)) {
 
         $spotiiRef = $order->get_meta('reference');
         $spotiiToken = $order->get_meta('token');
         error_log('orderstatus' . $order->get_status());
-        if ( $order_status === "completed" && check_amount($spotii_total, $spotii_curr, floatval($order->get_total()), $order->get_currency())) {
+        if ($order_status === "completed" && check_amount($spotii_total, $spotii_curr, floatval($order->get_total()), $order->get_currency())) {
             // Capture payment
             $url = $spotiiApi . 'orders/' . $spotiiRef .  '/capture/';
             $headers = array(
@@ -195,7 +200,7 @@ function spotii_order_update(){
             $response_body = $response['body'];
             $res = json_decode($response_body, true);
             
-            if ( $res['status'] === 'SUCCESS' && check_amount($spotii_total, $spotii_curr, floatval($order->get_total()), $order->get_currency())) {
+            if ($res['status'] === 'SUCCESS' && check_amount($spotii_total, $spotii_curr, floatval($order->get_total()), $order->get_currency())) {
                 try {
                     $order->add_order_note('Payment successful');
                     $order->payment_complete();
