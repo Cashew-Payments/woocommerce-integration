@@ -153,8 +153,8 @@ jQuery(document).ready(function (o) {
                     token: resp.token,
                     orderId: resp.orderId,
                     storeToken: resp.storeToken,
-                    successUrl: '',
-                    failureUrl: ''
+                    successUrl: resp.sucessURL,
+                    failureUrl: resp.cancelURL
                 };
                 cashew.checkout.load();
                 
@@ -164,8 +164,8 @@ jQuery(document).ready(function (o) {
                     token: resp.token,
                     orderId: resp.orderId,
                     storeToken: resp.storeToken,
-                    successUrl: '',
-                    failureUrl: ''
+                    successUrl: resp.sucessURL,
+                    failureUrl: resp.cancelURL
                 };
                 cashew.checkout.load();
             });
