@@ -28,7 +28,6 @@ function spotiiAuth($th, $addon = "", $currency= null){
         $payload = array(
             'method' => 'POST',
             'headers' => $headers,
-            'body' => wp_json_encode($body),
             'timeout' => 20
         );
 
