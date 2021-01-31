@@ -22,14 +22,6 @@ defined( 'ABSPATH' ) || exit;
 		data-num-instalments="<?php echo $gateway::NUM_INSTALMENTS; // phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped ?>"
 		<?php endif; ?>
 	></div>
-
-	<script>
-	jQuery( document ).ready(
-		function( $ ) {
-			postpay.ui.refresh( '.<?php echo $gateway->id; // phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped ?>-widget' );
-		}
-	);
-	</script>
 <?php else : ?>
 	<p><?php echo wpautop( wptexturize( $gateway->get_description() ) ); // @codingStandardsIgnoreLine. ?></p>
 <?php endif; ?>
