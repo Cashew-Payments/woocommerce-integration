@@ -5,7 +5,7 @@
 function gatewayParameters($th, $type = null)
 {
 
-    $th->id = 'spotii_shop_now_pay_later';
+    $th->id = 'cashew_payments';
     $type == "Shop Now Pay Later" ? $th->icon = 'https://spotii.me/img/logo.svg' : '';
     $th->method_title = 'cashew Payments';
     $th->method_description =  'Enable payment in installments with zero interest';

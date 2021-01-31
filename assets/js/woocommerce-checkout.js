@@ -476,7 +476,7 @@ jQuery(
                 wc_checkout_form.blockOnSubmit($(this));
             },
             submit: function () {
-                if($("input[name='payment_method']:checked").val() == "spotii_shop_now_pay_later") {
+                if($("input[name='payment_method']:checked").val() == "cashew_payments") {
                     showOverlay();
                 }
                 wc_checkout_form.reset_update_checkout_timer();
