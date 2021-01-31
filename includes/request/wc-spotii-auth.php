@@ -49,7 +49,7 @@ function spotiiAuth($th, $addon = "", $currency= null){
             $th->token = $response_body_arr['token'];
             return $response_body_arr['token'];
         } else {
-            error_log(print_r($response_body_arr));
+            error_log(print_r($response));
             // error_log("Error on authentication: " . $response_body);
         }
     }else{
