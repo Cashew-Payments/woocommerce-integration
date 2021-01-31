@@ -153,15 +153,32 @@ jQuery(document).ready(function (o) {
             }());
         document.getElementsByTagName("body")[0].appendChild(o), o.appendChild(i), o.appendChild(t())
     }, openIframeSpotiiCheckout = function (resp) {
-        
-        cashew.checkout.response = {
-            token: resp.token,
-            orderId: resp.orderId,
-            storeToken: resp.storeToken,
-            successUrl: '',
-            failureUrl: ''
-        };
-        cashew.checkout.load();
+        if (isMobileSafari()) {
+            // window.location.href = resp
+        } else {
+            thirdPartySupported(root).then(() => {
+                
+                cashew.checkout.response = {
+                    token: resp.token,
+                    orderId: resp.orderId,
+                    storeToken: resp.storeToken,
+                    successUrl: '',
+                    failureUrl: ''
+                };
+                cashew.checkout.load();
+                
+            }).catch(() => {
+                
+                cashew.checkout.response = {
+                    token: resp.token,
+                    orderId: resp.orderId,
+                    storeToken: resp.storeToken,
+                    successUrl: '',
+                    failureUrl: ''
+                };
+                cashew.checkout.load();
+            });
+        }
     }, spottiCapture = function (e, t, i = null, n = null, api = null) {
         var order_id = e;
         o.ajax({
