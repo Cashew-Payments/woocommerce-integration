@@ -1,21 +1,18 @@
 <?php
 
 /**
- * Plugin Name: Spotii Payment Gateway
- * Plugin URI: https://spotii.me/
- * Description: A buy-now-pay-later payment platform for WooCommerce
- * Version: 0.1.1
- * Author: Spotii
- * Author URI: https://spotii.me
- * Text Domain: spotii
- * Domain Path: /languages/
- * Developer: Abu Sufyan
- * Developer URI: https://github.com/chodri
+ * Plugin Name: cashew Payments
+ * Description: allow customers to buy now pay later for WooCommerce
+ * Version: 1.0.0
+ * Author: cashew
+ * Author URI: https://www.cashewpayments.com
+ * Developer: Gonçalo Silva Dias
+ * Developer URI: https://github.com/gsdias
  *
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl-3.0.html
  *
- * @package Spotii
+ * @package cashew
  */
 /*
  * Register our PHP class as a WooCommerce payment gateway
