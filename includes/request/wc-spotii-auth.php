@@ -32,7 +32,7 @@ function spotiiAuth($th, $addon = "", $currency= null){
         );
 
         $response = wp_remote_post($auth_url, $payload);
-error_log(print_r($response));
+
         if (is_wp_error($response)) {
             error_log("Exception [WP_Error_Spotii Authentication]: " . $response);
             throw new Exception(__('Network connection issue'));
@@ -44,7 +44,7 @@ error_log(print_r($response));
 
         $response_body = $response['body'];
         $response_body_arr = json_decode($response_body, true);
-print_r($response_body_arr);
+        error_log(print_r($response_body_arr));
         if (array_key_exists('token', $response_body_arr)) {
             $th->token = $response_body_arr['data']['token'];
             return $response_body_arr['data']['token'];
