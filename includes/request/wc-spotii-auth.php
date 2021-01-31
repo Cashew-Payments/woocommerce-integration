@@ -9,7 +9,6 @@ function spotiiAuth($th, $addon = "", $currency = null)
     if ($th->enabled == "yes") {
         $storeUrl =  $th->storeUrl;
         $cashewPrivateKey = $th->cashewPrivateKey;
-        echo 'CREDENTIALS: '.$storeUrl.' '.$cashewPrivateKey;
         if (empty($storeUrl) || empty($cashewPrivateKey)) {
             error_log("Keys does not exist [WP_Error_Spotii Authentication]: ");
             throw new Exception(__('Keys does not exist'));
@@ -29,8 +28,7 @@ function spotiiAuth($th, $addon = "", $currency = null)
         );
 
         $response = wp_remote_post($auth_url, $payload);
-        echo $auth_url;
-        print_r($payload);
+        
         if (is_wp_error($response)) {
             error_log("Exception [WP_Error_Spotii Authentication]: " . $response);
             throw new Exception(__('Network connection issue'));
