@@ -97,7 +97,7 @@ function getHeader($th){
         'Accept' => 'application/json; indent=4',
         'Content-Type' => 'application/json',
         'Access-Control-Allow-Origin' => '*',
-        'Authorization' => 'Bearer ' . $th->token
+        'Authorization' => $th->token
     );
     return $headers;
 }
