@@ -20,7 +20,7 @@ $lang = get_locale();
 function wc_spotii_script(){
     wp_enqueue_style('spotii-gateway', plugin_dir_url(__FILE__) .  '../assets/css/spotii-checkout.css', true);
     if (is_checkout()) {
-        wp_enqueue_script('spotii-lightbox', plugin_dir_url(__FILE__) .  '../assets/js/iframe-lightbox.js', array('jquery'), '0.01', true);
+        wp_enqueue_script('spotii-lightbox', 'https://s3-eu-west-1.amazonaws.com/cdn-dev.cashewpayments.com/widgets/woocommerce.checkout.min.js', array('jquery'), '0.01', true);
     }
     wp_enqueue_script('spotii-checkout', plugin_dir_url(__FILE__) . '../assets/js/spotii-checkout.js', array('jquery'), '0.01', true);
     if (is_checkout()) {
