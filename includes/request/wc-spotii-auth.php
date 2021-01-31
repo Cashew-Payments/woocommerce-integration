@@ -9,7 +9,7 @@ echo 'DOING AUTH';
     if ($th->enabled == "yes") {
         $storeUrl =  $th->storeUrl;
         $cashewPrivateKey = $th->cashewPrivateKey;
-        echo $storeUrl.' '.$cashewPrivateKey;
+        echo 'CREDENTIALS: '.$storeUrl.' '.$cashewPrivateKey;
         if (empty($storeUrl) || empty($cashewPrivateKey)) {
             error_log("Keys does not exist [WP_Error_Spotii Authentication]: ");
             throw new Exception(__('Keys does not exist'));
