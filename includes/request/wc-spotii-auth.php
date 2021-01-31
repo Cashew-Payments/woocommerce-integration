@@ -21,9 +21,6 @@ function spotiiAuth($th, $addon = "", $currency= null){
         $headers = array(
             'Accept' => 'application/json',
             'Content-Type' => 'application/json',
-        );
-
-        $body = array(
             'storeUrl' => $public_key,
             'cashewSecretKey' => $private_key
         );
