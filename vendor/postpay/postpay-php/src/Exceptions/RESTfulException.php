@@ -23,6 +23,7 @@ class RESTfulException extends ApiException
      */
     public function __construct(Response $response)
     {
+        print_r($response);
         $this->response = $response;
         $this->decodedBody = $response->json();
         $this->errorCode = $this->get('code', 'unknown');
