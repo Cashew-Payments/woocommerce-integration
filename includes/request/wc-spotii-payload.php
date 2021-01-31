@@ -14,11 +14,9 @@ function get_checkout_payload($order, $th, $type, $addon){
     $headers =  getHeader($th);
     $notify_url = get_home_url(null, "?wc-api=" . $addon);
     $body = array(
-        "reference" => $order_id,
-        "display_reference" => $order_id,
-        "description" => "Woo- Commerce Order #" . $order->get_id(),
-        "total" => round($total, 4),
-        "currency" => $currency,
+        "orderReference" => $order_id,
+        "totalAmount" => round($total, 4),
+        "currencyCode" => $currency,
         "confirm_callback_url" => $notify_url . "&o=" . $order->get_id() . "&s=s",
         "reject_callback_url" => $notify_url . "&o=" . $order->get_id() . "&s=f",
 
@@ -34,7 +32,7 @@ function get_checkout_payload($order, $th, $type, $addon){
                 "phone" => $order->get_billing_phone(),
             ),
 
-            "billing_address" => array(
+            "billingAddress" => array(
                 "title" => "",
                 "first_name" => $order->get_billing_first_name(),
                 "last_name" => $order->get_billing_last_name(),
