@@ -9,12 +9,7 @@ class Request
     /**
      * @const string API URL.
      */
-    const API_URL = 'https://<subdomain>.postpay.io';
-
-    /**
-     * @const string Accept HTTP header.
-     */
-    const ACCEPT_HEADER = 'application/vnd.postpay+json; version=';
+    const API_URL = 'https://env.cashewpayments.com';
 
     /**
      * @var string The HTTP method.
@@ -156,9 +151,7 @@ class Request
     {
         return [
             'Accept-Encoding' => '*',
-            'Accept' => static::ACCEPT_HEADER . $this->apiVersion,
             'Content-Type' => 'application/json',
-            'User-Agent' => 'postpay-php:' . Postpay::VERSION,
         ];
     }
 
@@ -227,8 +220,8 @@ class Request
 
     public function getApiUrl()
     {
-        $subdomain = $this->sandbox ? 'sandbox' : 'api';
-        return str_replace('<subdomain>', $subdomain, static::API_URL);
+        $subdomain = $this->sandbox ? 'api-sandbox' : 'api';
+        return str_replace('env', $subdomain, static::API_URL);
     }
 
     /**
