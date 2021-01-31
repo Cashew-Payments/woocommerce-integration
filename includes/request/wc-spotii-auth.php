@@ -4,7 +4,7 @@
 */
 function spotiiAuth($th, $addon = "", $currency = null)
 {
-echo 'DOING AUTH';
+
     $auth_url =  $th->auth . 'identity/store/authorize';
     if ($th->enabled == "yes") {
         $storeUrl =  $th->storeUrl;
