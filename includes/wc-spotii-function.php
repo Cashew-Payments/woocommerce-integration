@@ -75,64 +75,6 @@ function admin_js()
                     $(".submit").children(0).prop("disabled", false);
                 }
             });
-            // hide show test keys 
-            if ($("input[id*='testmode']").is(':checked')) {
-                $("input[id*='testmode']").parents("tr").siblings().find("input[id*='test']").parents("tr").show();
-            } else {
-                $("input[id*='testmode']").parents("tr").siblings().find("input[id*='test']").parents("tr").hide();
-            }
-            $("input[id*='testmode']").on("click", "", function() {
-                if ($(this).is(':checked')) {
-                    $(this).parents("tr").siblings().find("input[id*='test']").parents("tr").show();
-                } else {
-                    $(this).parents("tr").siblings().find("input[id*='test']").parents("tr").hide();
-                }
-            })
-            // hide show  aed keys
-            if ($("input[id*='add_aed_key']").is(':checked')) {
-                if ($("input[id*='testmode']").is(':checked')) {
-                    $("input[id*='add_aed_key']").parents("tr").siblings().find("input[id*='_aed']").parents("tr").show();
-                } else {
-                    $("input[id*='add_aed_key']").parents("tr").siblings().find("input[id*='live_aed']").parents("tr").show();
-                }
-            } else {
-                $("input[id*='aed_key']").parents("tr").siblings().find("input[id*='_aed']").parents("tr").hide();
-            }
-            $("input[id*='add_aed_key']").on("click", "", function() {
-                if ($(this).is(':checked')) {
-                    if ($("input[id*='testmode']").is(':checked')) {
-                        $(this).parents("tr").siblings().find("input[id*='_aed']").parents("tr").show();
-                    } else {
-                        $(this).parents("tr").siblings().find("input[id*='live_aed']").parents("tr").show();
-                    }
-
-                } else {
-                    $(this).parents("tr").siblings().find("input[id*='_aed']").parents("tr").hide();
-                }
-            })
-            // hide show sar keys 
-            if ($("input[id*='add_sar_key']").is(':checked')) {
-                if ($("input[id*='testmode']").is(':checked')) {
-                    $("input[id*='add_sar_key']").parents("tr").siblings().find("input[id*='_sar']").parents("tr").show();
-                } else {
-                    $("input[id*='add_sar_key']").parents("tr").siblings().find("input[id*='live_sar']").parents("tr").show();
-                }
-            } else {
-                $("input[id*='sar_key']").parents("tr").siblings().find("input[id*='_sar']").parents("tr").hide();
-            }
-            $("input[id*='add_sar_key']").on("click", "", function() {
-                if ($(this).is(':checked')) {
-                    if ($("input[id*='testmode']").is(':checked')) {
-                        $(this).parents("tr").siblings().find("input[id*='_sar']").parents("tr").show();
-                    } else {
-                        $(this).parents("tr").siblings().find("input[id*='live_sar']").parents("tr").show();
-                    }
-
-                } else {
-                    $(this).parents("tr").siblings().find("input[id*='_sar']").parents("tr").hide();
-                }
-            })
-
         });
     </script>
 <?php }

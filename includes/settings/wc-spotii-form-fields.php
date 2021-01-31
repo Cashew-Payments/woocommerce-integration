@@ -56,13 +56,6 @@ function form_fields($th, $type = null)
         'private_key_live_aed' => array(
             'title' => 'Live Private Key',
             'type' => 'password',
-        ),
-        'add_sar_key' => array(
-            'title' => 'Add keys for SAR currency',
-            'label' => 'Enable Keys',
-            'type' => 'checkbox',
-            'default' => 'no',
-            'desc_tip' => false,
         )
     );
 
