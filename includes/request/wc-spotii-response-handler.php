@@ -1,11 +1,12 @@
 <?php
- /**
-  * Called when Spotii checkout page redirects back to merchant page
-  */
+
+/**
+ * Called when Spotii checkout page redirects back to merchant page
+ */
 function spotiiResponseHandler($th)
 {
     $lang = get_locale();
-    $errorChe = $lang == 'ar' ? 'خطأ في تأكيد الطلب: ' : 'Checkout Error: ' ;
+    $errorChe = $lang == 'ar' ? 'خطأ في تأكيد الطلب: ' : 'Checkout Error: ';
     $order_id = $_GET['o'];
     $order = wc_get_order($order_id);
     $spotiiRef = $order->get_meta('reference');
@@ -48,7 +49,7 @@ function spotiiResponseHandler($th)
                 throw new Exception(__('Empty response body'));
             }
             $response_body = $response['body'];
-            $res = json_decode($response_body, true);   
+            $res = json_decode($response_body, true);
             if ($res['status'] === 'SUCCESS') {
                 $order->add_order_note('Payment successful');
                 //wc_add_notice(__('Payment Success: ', 'woothemes') . "Payment complete", 'success');

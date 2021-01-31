@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Spotii functions
  */
@@ -55,87 +56,84 @@ add_action('wp_footer', 'spotii_footer');
 */
 function admin_js()
 {
-    ?>
+?>
     <script type="text/javascript">
-
-        jQuery(document).ready( function ($) { 
+        jQuery(document).ready(function($) {
             //Conditional calue 
             $("input[id*='order_minimum']").on("change paste keyup", function() {
-                if(parseFloat($("input[id*='order_minimum']").val()) < 200){
-                if(! $('#error-code-min').length){
-                $("#woocommerce_spotii_shop_now_pay_later_order_minimum").parent().parent().append( "<p id='error-code-min' style='color:red;'>Please enter a value more than 200 AED</p>");
-                }else{
-                    $("#error-code-min").show();
+                if (parseFloat($("input[id*='order_minimum']").val()) < 200) {
+                    if (!$('#error-code-min').length) {
+                        $("#woocommerce_spotii_shop_now_pay_later_order_minimum").parent().parent().append("<p id='error-code-min' style='color:red;'>Please enter a value more than 200 AED</p>");
+                    } else {
+                        $("#error-code-min").show();
+                    }
+                    $(".submit").children(0).prop("disabled", true);
+                } else {
+                    if ($('#error-code-min').length) {
+                        $("#error-code-min").hide();
+                    }
+                    $(".submit").children(0).prop("disabled", false);
                 }
-                $(".submit").children(0).prop("disabled",true);
-            }
-            else{
-                if($('#error-code-min').length){
-                $("#error-code-min").hide();
-                }
-                $(".submit").children(0).prop("disabled",false);
-            }
             });
             // hide show test keys 
-            if($("input[id*='testmode']").is(':checked')){
+            if ($("input[id*='testmode']").is(':checked')) {
                 $("input[id*='testmode']").parents("tr").siblings().find("input[id*='test']").parents("tr").show();
-            }else{
+            } else {
                 $("input[id*='testmode']").parents("tr").siblings().find("input[id*='test']").parents("tr").hide();
             }
-            $("input[id*='testmode']").on("click","",function(){
-                if($(this).is(':checked')){
+            $("input[id*='testmode']").on("click", "", function() {
+                if ($(this).is(':checked')) {
                     $(this).parents("tr").siblings().find("input[id*='test']").parents("tr").show();
-                }else{
+                } else {
                     $(this).parents("tr").siblings().find("input[id*='test']").parents("tr").hide();
                 }
             })
             // hide show  aed keys
-            if($("input[id*='add_aed_key']").is(':checked')){
-                if($("input[id*='testmode']").is(':checked')){
-                        $("input[id*='add_aed_key']").parents("tr").siblings().find("input[id*='_aed']").parents("tr").show();
-                    }else{
-                        $("input[id*='add_aed_key']").parents("tr").siblings().find("input[id*='live_aed']").parents("tr").show();
-                    }
-            }else{
+            if ($("input[id*='add_aed_key']").is(':checked')) {
+                if ($("input[id*='testmode']").is(':checked')) {
+                    $("input[id*='add_aed_key']").parents("tr").siblings().find("input[id*='_aed']").parents("tr").show();
+                } else {
+                    $("input[id*='add_aed_key']").parents("tr").siblings().find("input[id*='live_aed']").parents("tr").show();
+                }
+            } else {
                 $("input[id*='aed_key']").parents("tr").siblings().find("input[id*='_aed']").parents("tr").hide();
             }
-            $("input[id*='add_aed_key']").on("click","",function(){
-                if($(this).is(':checked')){
-                    if($("input[id*='testmode']").is(':checked')){
+            $("input[id*='add_aed_key']").on("click", "", function() {
+                if ($(this).is(':checked')) {
+                    if ($("input[id*='testmode']").is(':checked')) {
                         $(this).parents("tr").siblings().find("input[id*='_aed']").parents("tr").show();
-                    }else{
+                    } else {
                         $(this).parents("tr").siblings().find("input[id*='live_aed']").parents("tr").show();
                     }
-                    
-                }else{
+
+                } else {
                     $(this).parents("tr").siblings().find("input[id*='_aed']").parents("tr").hide();
                 }
             })
             // hide show sar keys 
-            if($("input[id*='add_sar_key']").is(':checked')){
-                if($("input[id*='testmode']").is(':checked')){
-                        $("input[id*='add_sar_key']").parents("tr").siblings().find("input[id*='_sar']").parents("tr").show();
-                    }else{
-                        $("input[id*='add_sar_key']").parents("tr").siblings().find("input[id*='live_sar']").parents("tr").show();
-                    }
-            }else{
+            if ($("input[id*='add_sar_key']").is(':checked')) {
+                if ($("input[id*='testmode']").is(':checked')) {
+                    $("input[id*='add_sar_key']").parents("tr").siblings().find("input[id*='_sar']").parents("tr").show();
+                } else {
+                    $("input[id*='add_sar_key']").parents("tr").siblings().find("input[id*='live_sar']").parents("tr").show();
+                }
+            } else {
                 $("input[id*='sar_key']").parents("tr").siblings().find("input[id*='_sar']").parents("tr").hide();
             }
-            $("input[id*='add_sar_key']").on("click","",function(){
-                if($(this).is(':checked')){
-                    if($("input[id*='testmode']").is(':checked')){
+            $("input[id*='add_sar_key']").on("click", "", function() {
+                if ($(this).is(':checked')) {
+                    if ($("input[id*='testmode']").is(':checked')) {
                         $(this).parents("tr").siblings().find("input[id*='_sar']").parents("tr").show();
-                    }else{
+                    } else {
                         $(this).parents("tr").siblings().find("input[id*='live_sar']").parents("tr").show();
                     }
-                    
-                }else{
+
+                } else {
                     $(this).parents("tr").siblings().find("input[id*='_sar']").parents("tr").hide();
                 }
             })
-            
-        });
 
+        });
     </script>
 <?php }
 
@@ -145,7 +143,7 @@ add_action('admin_head', 'admin_js');
 */
 function spotii_order_update()
 {
-    
+
     $order_id = isset($_POST["order_id"]) ? $_POST["order_id"] : "";
     $order_status = isset($_POST["status"]) ? $_POST["status"] : "";
     $spotii_total = isset($_POST["total"]) ? floatval($_POST["total"]) : "";
@@ -153,22 +151,22 @@ function spotii_order_update()
     $spotiiApi = isset($_POST["api"]) ? $_POST["api"] : "";
     $order = wc_get_order($order_id);
     $lang = get_locale();
-    $errorChe = $lang == 'ar' ? 'خطأ في تأكيد الطلب: ' : 'Checkout Error: ' ;
+    $errorChe = $lang == 'ar' ? 'خطأ في تأكيد الطلب: ' : 'Checkout Error: ';
 
-    if($order->has_status('completed') || $order->has_status('processing')) {
-        $error = $lang == 'ar' ? "الطلب موجود بالفعل بحالة " .$order->get_status() : "Order already exist with ".$order->get_status()." status";
+    if ($order->has_status('completed') || $order->has_status('processing')) {
+        $error = $lang == 'ar' ? "الطلب موجود بالفعل بحالة " . $order->get_status() : "Order already exist with " . $order->get_status() . " status";
         wc_add_notice(__($errorChe, 'woothemes') . $error, 'error');
         $redirect_url = $order->get_checkout_order_received_url();
         echo json_encode(array('result' => 'success', 'redirect' => $redirect_url));
         die;
     }
     $errorPaymentFailed = $lang == 'ar' ? "لقد حصل خطأ عند الدفع عن طريق سبوتي، رجاءً حاول مرة اخرى" : "Payment with Spotii failed. Please try again";
-    if(!empty($spotii_total)) {
+    if (!empty($spotii_total)) {
 
         $spotiiRef = $order->get_meta('reference');
         $spotiiToken = $order->get_meta('token');
         error_log('orderstatus' . $order->get_status());
-        if ($order_status === "completed" && check_amount($spotii_total, $spotii_curr, floatval($order->get_total()), $order->get_currency())) {
+        if ($order_status === "completed") {
             // Capture payment
             $url = $spotiiApi . 'orders/' . $spotiiRef .  '/capture/';
             $headers = array(
@@ -196,11 +194,11 @@ function spotii_order_update()
                 error_log('Response Empty [Spotii spotii_response_handler] ');
                 throw new Exception(__('Empty response body'));
             }
-            
+
             $response_body = $response['body'];
             $res = json_decode($response_body, true);
-            
-            if ($res['status'] === 'SUCCESS' && check_amount($spotii_total, $spotii_curr, floatval($order->get_total()), $order->get_currency())) {
+
+            if ($res['status'] === 'SUCCESS') {
                 try {
                     $order->add_order_note('Payment successful');
                     $order->payment_complete();
@@ -211,7 +209,7 @@ function spotii_order_update()
                 } catch (Exception $e) {
                     error_log("Error on spotii_response handler[Spotii spotii_response_handler]: " . $e->getMessage());
                 }
-            }else{
+            } else {
                 $order->add_order_note('Order capture failed');
                 wc_add_notice(__($errorChe, 'woothemes') . $errorPaymentFailed, 'error');
                 $order->update_status('cancelled', __('Order capture failed', 'woocommerce'));
@@ -227,8 +225,7 @@ function spotii_order_update()
             echo json_encode(array('result' => 'error', 'redirect' => $redirect_url));
             die;
         }
-
-    }else{
+    } else {
         wc_add_notice(__($errorChe, 'woothemes') . $errorPaymentFailed, 'error');
         $redirect_url = $order->get_cancel_order_url();
         echo json_encode(array('result' => 'success', 'redirect' => $redirect_url));

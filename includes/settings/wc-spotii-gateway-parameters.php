@@ -50,5 +50,4 @@ function gatewayParameters($th, $type = null)
     $th->api = $th->testMode ? "https://api-dev.cashewpayments.com/v1/" : "https://api.cashewpayments.com/v1/";
 
     add_action('woocommerce_update_options_payment_gateways_' . $th->id, array($th, 'process_admin_options'));
-    
 }

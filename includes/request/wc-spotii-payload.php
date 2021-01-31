@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Helper to prepare checkout payload
  */
@@ -6,11 +7,11 @@ function get_checkout_payload($order, $th, $type, $addon)
 {
     $order_id = $order->get_meta('_alg_wc_custom_order_number') !== "" ? $order->get_meta('_alg_wc_custom_order_number') : $order->get_id();
     $currency = $order->get_currency();
-    $total=$order->get_total();
+    $total = $order->get_total();
     spotiiAuth($th, $addon,  $currency);
-    if($currency == "USD" ) {
+    if ($currency == "USD") {
         $total = $total * 3.6730;
-        $currency= "AED";
+        $currency = "AED";
     }
     $headers =  getHeader($th);
     $notify_url = get_home_url(null, "?wc-api=" . $addon);

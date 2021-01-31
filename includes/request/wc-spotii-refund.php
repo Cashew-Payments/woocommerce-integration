@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Process refunds
  */
@@ -7,7 +8,7 @@ function processRefund($order_id, $amount = null, $reason = '', $th)
 
     $order = wc_get_order($order_id);
     $url = $th->api . 'orders/' . $order_id . '/refund';
-    
+
     $auth = spotiiAuth($th, $order->get_payment_method(), $order->get_currency());
     $headers = getHeader($th);
     $body = array(
@@ -35,7 +36,7 @@ function processRefund($order_id, $amount = null, $reason = '', $th)
     }
 
     // Check for capture success 
-    if ($res['status'] == 'SUCCESS' &&  check_amount(floatval($res['amount']), $res['currency'], floatval($amount), $order->get_currency())) {
+    if ($res['status'] == 'SUCCESS') {
         wc_add_notice(__('Refund Success: ', 'woothemes') . "Refund complete", 'success');
         return true;
     } else {

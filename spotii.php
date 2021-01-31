@@ -36,7 +36,6 @@ function spotii_add_gateway_class($gateways)
 
     $gateways[] = 'WC_Spotii_Gateway_Shop_Now_Pay_Later';
     return $gateways;
-
 }
 /*
  * Load Spotii Gateway class on plugins_loaded action
@@ -47,7 +46,8 @@ add_action('plugins_loaded', 'spotii_init_gateway_class');
 function spotii_init_gateway_class()
 {
 
-    if (class_exists('WC_Spotii_Gateway_Shop_Now_Pay_Later') || !class_exists('WC_Payment_Gateway')) { return;
+    if (class_exists('WC_Spotii_Gateway_Shop_Now_Pay_Later') || !class_exists('WC_Payment_Gateway')) {
+        return;
     }
 
     define('WC_SPOTII_DIR_PATH', plugin_dir_path(__FILE__));

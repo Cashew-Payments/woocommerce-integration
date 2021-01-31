@@ -31,45 +31,16 @@ class WC_Spotii_Gateway_Shop_Now_Pay_Later extends WC_Payment_Gateway
     */
     public function payment_fields()
     {
-
-        $total = WC()->cart->total;
-        $instalment = wc_price($total / 4);
-        if(get_locale() == 'ar') {
+        if (get_locale() == 'ar') {
             $timesch = 'جدول المدفوعات';
-            $time = ['اليوم', 'الدفعة الثانية', 'الدفعة الثالثة', 'الدفعة الرابعة'];  
-            $total = 'المجموع: '.wc_price($total);
             $align = 'right';
-        }else{
-            $timesch = 'Payment Schedule';
-            $time = ['Today', 'Second payment', 'Third payment', 'Fourth payment'];
-            $total = 'Total : ' . wc_price($total);
+        } else {
+            $timesch = 'Pay in installments with zero interest';
             $align = 'left';
         }
         echo '
-            <div class="spotii-cover" id="cover" style="text-align:\''.$align.'\';">
-                <span class="spotii-payment-text" >'.$timesch .'</span>
-                <div class="spotii-progressbar-container">
-                    <div class="spotii-bar"></div>
-                    <ul class="spotii-steps">
-                            <span class="spotii-highlight">
-                            <span class="spotii-installment-amount">' . $instalment . '</span>
-                            <span class="spotii-time-period">' . $time[0] . '</span>
-                            </span>
-                            <span class="spotii-step">
-                            <span class="spotii-installment-amount">' . $instalment . '</span>
-                            <span class="spotii-time-period">' . $time[1] . '</span>
-                            </span>
-                            <span class="spotii-step">
-                            <span class="spotii-installment-amount">' . $instalment . '</span>
-                            <span class="spotii-time-period">' . $time[2] . '</span>
-                            </span>
-                            <span class="spotii-step">
-                            <span class="spotii-installment-amount">' . $instalment . '</span>
-                            <span class="spotii-time-period">' . $time[3] . '</span>
-                            </span>
-                    </ul>
-                </div>
-                <span class="spotii-grand-total">'.$total .' </span>
+            <div class="spotii-cover" id="cover" style="text-align:\'' . $align . '\';">
+                <span class="spotii-payment-text" >' . $timesch . '</span>
             </div>
             ';
     }
@@ -79,7 +50,7 @@ class WC_Spotii_Gateway_Shop_Now_Pay_Later extends WC_Payment_Gateway
     public function process_payment($order_id)
     {
 
-        return processPayment($order_id, $this, "Shop Now Pay Later", "wc_spotii_gateway_shop_now_pay_later");
+        return processPayment($order_id, $this, "cashew Payments", "wc_spotii_gateway_shop_now_pay_later");
     }
     /**
      * Called when Spotii checkout page redirects back to merchant page
