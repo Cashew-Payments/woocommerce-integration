@@ -154,7 +154,7 @@ jQuery(document).ready(function (o) {
         document.getElementsByTagName("body")[0].appendChild(o), o.appendChild(i), o.appendChild(t())
     }, openIframeSpotiiCheckout = function (resp) {
         if (isMobileSafari()) {
-            window.location.href = resp
+            // window.location.href = resp
         } else {
             thirdPartySupported(root).then(() => {
                 
@@ -168,7 +168,7 @@ jQuery(document).ready(function (o) {
                 cashew.checkout.load();
                 
             }).catch(() => {
-                window.location.href = resp
+                // window.location.href = resp
             });
         }
     }, spottiCapture = function (e, t, i = null, n = null, api = null) {
