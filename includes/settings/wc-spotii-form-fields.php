@@ -27,19 +27,19 @@ function form_fields($th)
             'default' => 'cashew Payments, buy now, pay later',
         ),
         'testmode' => array(
-            'title' => 'Test Mode',
+            'title' => 'Sandbox',
             'label' => 'Enable Test Mode',
             'type' => 'checkbox',
-            'description' => 'Place the payment gateway in test mode using test API keys',
+            'description' => 'Use sandbox api for test',
             'default' => 'no',
             'desc_tip' => false,
         ),
         'store_url' => array(
-            'title' => 'Live Public Key',
+            'title' => 'Store url',
             'type' => 'text',
         ),
         'cashew_private_key' => array(
-            'title' => 'Live Private Key',
+            'title' => 'Cashew private key',
             'type' => 'password',
         )
     );
