@@ -9,9 +9,7 @@ function processPayment($order_id, $th, $type = null, $addon)
     $order = new WC_Order($order_id);
     $currency = $order->get_currency();
     $total = $order->get_total();
-    if ($currency == "USD") {
-        $total = $total * 3.6730;
-    }
+    
     $min = (int)$th->order_min;
     $max = (int)$th->order_max;
     // Spotii minimum limit 
@@ -27,7 +25,7 @@ function processPayment($order_id, $th, $type = null, $addon)
     // validate currency 
     
     if (!validate_curr($currency)) {
-        $errorCurr = $lang == 'ar' ? "سبوتي لا يدعم هذه العملة" : "Currency is not supported by Spotii";
+        $errorCurr = $lang == 'ar' ? "سبوتي لا يدعم هذه العملة" : "Currency is not supported";
         error_log("Exception [WP_Error_Spotii Process Payment] " . $errorCurr . $currency);
         throw new Exception(__($errorCurr));
     }
@@ -54,14 +52,12 @@ function processPayment($order_id, $th, $type = null, $addon)
         if (array_key_exists('token', $response_body_arr['data'])) {
             $redirect_url = $response_body_arr['data']['url'];
             $order->update_meta_data('reference', $response_body_arr['data']['orderId']);
-            $order->update_meta_data('token', $th->token);
             $order->save();
             return array('result' => 'success', 'redirect' => "", 'token' => $response_body_arr['data']['token'], 'storeToken' => $th->token, "checkout_url" => $redirect_url, "orderId" => $response_body_arr['data']['orderId'], "api" => $th->api, "cancelURL" => $order->get_cancel_order_url(), "sucessURL" => $order->get_checkout_order_received_url());
         } else {
 
             $errorMin = $lang == 'ar' ? "المبلغ الاجمالي في سلتك أقل من الحد الادنى لاستخدام سبوتي: سبوتي متاح للطلبات بقيمة اعلى من 200 درهم اماراتي أو 200 ريال سعودي. بقليل من التسوق يمكن تقسيم دفعاتك على أربع أقساط  خالية من التكاليف الاضافية. " : "You don't quite have enough in your basket: Spotii is available for purchases over AED 200. With a little more shopping, you can split your payment over 4 cost-free instalments.";
             error_log("Error on process payment: " . $response_body);
-            $order->add_order_note('Checkout with Spotii failed: ' . $response_body);
             $res = json_decode($response_body, true);
         }
     } catch (Exception $e) {

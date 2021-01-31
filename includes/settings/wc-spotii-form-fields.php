@@ -10,7 +10,7 @@ function form_fields($th)
             'title' => 'Enable/Disable',
             'label' => 'cashew Payments, buy now, pay later',
             'type' => 'checkbox',
-            'description' => __('Don&rsquo;t have a Spotii Merchant account yet?', 'woocommerce') . ' ' . '<a href="https://dashboard.spotii.me/signup" target="_blank">' . __('Apply online today!', 'woocommerce') . '</a>',
+            'description' => '',
             'default' => 'no',
         ),
         'title' => array(
@@ -48,13 +48,13 @@ function form_fields($th)
         'order_minimum' => array(
             'title' => 'Order minimum',
             'type' => 'text',
-            'default' => '200',
+            'default' => '0',
             'description' => 'The order minimum is set in AED'
         ),
         'order_maximum' => array(
             'title' => 'Order maximum',
             'type' => 'text',
-            'default' => '200',
+            'default' => '4000',
             'description' => 'The order maximum is set in AED'
         )
     );

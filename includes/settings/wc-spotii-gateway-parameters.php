@@ -28,17 +28,8 @@ function gatewayParameters($th, $type = null)
     $th->testMode = 'yes' === $th->get_option('testmode', 'yes');
     $th->order_min = $th->get_option('order_minimum', '');
     $th->order_max = $th->get_option('order_maximum', '');
-    // AED api 
     $th->storeUrl = $th->get_option('store_url', '');
     $th->cashewPrivateKey = $th->get_option('cashew_private_key', '');
-    // Widget settings
-    $th->widget_theme = $th->get_option('widget_theme', '');
-    $th->widget_text = $th->get_option('widget_text', '');
-    $th->popup_link = $th->get_option('popup_learnMore_link', '');
-    $th->show_custom_note_ar = $th->get_option('show_custom_note_ar', '');
-    $th->show_custom_note_en = $th->get_option('show_custom_note_en', '');
-    $th->render_path_product = $th->get_option('render_path_product', '');
-    $th->render_path_cart = $th->get_option('render_path_cart', '');
 
     $th->auth = $th->testMode ? "https://api-dev.cashewpayments.com/v1/" : "https://api.cashewpayments.com/v1/";
     $th->api = $th->testMode ? "https://api-dev.cashewpayments.com/v1/" : "https://api.cashewpayments.com/v1/";
