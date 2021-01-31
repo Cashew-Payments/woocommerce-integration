@@ -8,7 +8,7 @@ function form_fields($th, $type = null)
     $th->form_fields = array(
         'enabled' => array(
             'title' => 'Enable/Disable',
-            'label' => 'Spotii: Shop Now, Pay Later',
+            'label' => 'cashew Payments, buy now, pay later',
             'type' => 'checkbox',
             'description' => __('Don&rsquo;t have a Spotii Merchant account yet?', 'woocommerce') . ' ' . '<a href="https://dashboard.spotii.me/signup" target="_blank">' . __('Apply online today!', 'woocommerce') . '</a>',
             'default' => 'no',
@@ -17,14 +17,14 @@ function form_fields($th, $type = null)
             'title' => 'Title',
             'type' => 'text',
             'description' => 'This controls the title that the user sees during checkout',
-            'default' => 'Spotii: Shop Now, Pay Later',
+            'default' => 'cashew Payments, buy now, pay later',
             'desc_tip' => true,
         ),
         'description' => array(
             'title' => 'Description',
             'type' => 'textarea',
             'description' => 'This controls the description which the user sees during checkout',
-            'default' => 'Spotii: Shop Now, Pay Later',
+            'default' => 'cashew Payments, buy now, pay later',
         ),
         'testmode' => array(
             'title' => 'Test Mode',

@@ -7,8 +7,8 @@ function gatewayParameters($th, $type = null)
 
     $th->id = 'spotii_shop_now_pay_later';
     $type == "Shop Now Pay Later" ? $th->icon = 'https://spotii.me/img/logo.svg' : '';
-    $th->method_title = 'Spotii';
-    $th->method_description =  'Have your customers pay over time for their purchases. No hidden fees, no interest.';
+    $th->method_title = 'cashew Payments';
+    $th->method_description =  'Enable payment in installments with zero interest';
 
     // Options supported by Spotii payment gateway
     $th->supports = array(
