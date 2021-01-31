@@ -41,7 +41,7 @@ class WC_Postpay_Client implements ClientInterface {
 		);
 
 		$response = wp_remote_request( $request->getUrl(), $options );
-
+print_r($response);
 		if ( is_wp_error( $response ) ) {
 			throw new PostpayException(
 				$response->get_error_message(),
