@@ -32,11 +32,6 @@ function gatewayParameters($th, $type = null)
     $th->privateKeyAED = $th->get_option('private_key_live_aed', '');
     $th->testPublicKeyAED = $th->get_option('public_key_test_aed', '');
     $th->testPrivateKeyAED = $th->get_option('private_key_test_aed', '');
-    // SAR Api 
-    $th->publicKeySAR = $th->get_option('public_key_live_sar', '');
-    $th->privateKeySAR = $th->get_option('private_key_live_sar', '');
-    $th->testPublicKeySAR = $th->get_option('public_key_test_sar', '');
-    $th->testPrivateKeySAR = $th->get_option('private_key_test_sar', '');
     // Widget settings
     $th->widget_theme = $th->get_option('widget_theme', '');
     $th->widget_text = $th->get_option('widget_text', '');

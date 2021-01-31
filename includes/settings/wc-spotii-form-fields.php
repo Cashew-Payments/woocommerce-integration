@@ -63,22 +63,6 @@ function form_fields($th, $type = null)
             'type' => 'checkbox',
             'default' => 'no',
             'desc_tip' => false,
-        ),
-        'public_key_test_sar' => array(
-            'title' => 'Sandbox Public Key',
-            'type' => 'text',
-        ),
-        'private_key_test_sar' => array(
-            'title' => 'Sandbox Private Key',
-            'type' => 'password',
-        ),
-        'public_key_live_sar' => array(
-            'title' => 'Live Public Key',
-            'type' => 'text',
-        ),
-        'private_key_live_sar' => array(
-            'title' => 'Live Private Key',
-            'type' => 'password',
         )
     );
 
