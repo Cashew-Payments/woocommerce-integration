@@ -529,6 +529,8 @@ jQuery( function( $ ) {
 									token: result.token,
 									orderId: result.orderId,
 									storeToken: result.storeToken,
+									successUrl: result.sucessURL,
+									failureUrl: result.cancelURL
 								});
 
 							}else if ( 'success' === result.result && $form.triggerHandler( 'checkout_place_order_success' ) !== false ) {
