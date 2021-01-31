@@ -112,7 +112,7 @@ class WC_Postpay_Adapter {
 	 */
 	public function checkout( $order_id ) {
 		require_once WC_POSTPAY_DIR_PATH . 'includes/request/class-wc-postpay-request-checkout.php';
-		return $this->post( '/checkouts', WC_Postpay_Request_Checkout::build( $order_id, $this->gateway ) );
+		return $this->post( '/v1/checkouts', WC_Postpay_Request_Checkout::build( $order_id, $this->gateway ) );
 	}
 
 	/**
