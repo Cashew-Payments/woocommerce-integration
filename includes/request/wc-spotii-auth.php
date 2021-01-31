@@ -26,7 +26,7 @@ function spotiiAuth($th, $addon = "", $currency = null)
             'headers' => $headers,
             'timeout' => 20
         );
-
+print_r($payload);
         $response = wp_remote_post($auth_url, $payload);
 
         if (is_wp_error($response)) {

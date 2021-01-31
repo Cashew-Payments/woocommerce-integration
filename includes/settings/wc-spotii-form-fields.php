@@ -2,7 +2,7 @@
 /*
 /* Form Fields 
 */
-function form_fields($th, $type = null)
+function form_fields($th)
 {
 
     $th->form_fields = array(
@@ -50,6 +50,12 @@ function form_fields($th, $type = null)
             'type' => 'text',
             'default' => '200',
             'description' => 'The order minimum is set in AED'
+        ),
+        'order_maximum' => array(
+            'title' => 'Order maximum',
+            'type' => 'text',
+            'default' => '200',
+            'description' => 'The order maximum is set in AED'
         ),
         'widget_text' => array(
             'title' => 'Widget text',

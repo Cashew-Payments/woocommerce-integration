@@ -609,7 +609,6 @@ jQuery(
                 wc_checkout_form.$checkout_form.removeClass('processing').unblock();
                 wc_checkout_form.$checkout_form.find('.input-text, select, input:checkbox').trigger('validate').blur();
                 wc_checkout_form.scroll_to_notices();
-                removeOverlay();
                 $(document.body).trigger('checkout_error');
             },
             scroll_to_notices: function () {
