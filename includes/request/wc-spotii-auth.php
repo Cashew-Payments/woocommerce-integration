@@ -17,7 +17,7 @@ function spotiiAuth($th, $addon = "", $currency= null){
             error_log("Keys does not exist [WP_Error_Spotii Authentication]: " . $response);
             throw new Exception(__('Keys does not exist'));
         }
-
+echo $public_key. ' ' . $private_key;
         $headers = array(
             'Accept' => 'application/json',
             'Content-Type' => 'application/json',
