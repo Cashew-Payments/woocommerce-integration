@@ -29,6 +29,7 @@ function spotiiAuth($th, $addon = "", $currency = null)
         );
 
         $response = wp_remote_post($auth_url, $payload);
+        echo $auth_url;
         print_r($payload);
         if (is_wp_error($response)) {
             error_log("Exception [WP_Error_Spotii Authentication]: " . $response);
