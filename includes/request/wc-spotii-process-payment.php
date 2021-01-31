@@ -47,8 +47,8 @@ function processPayment($order_id, $th, $type = null, $addon){
         $response_body = $response['body'];
         $response_body_arr = json_decode($response_body, true);
 
-        if (array_key_exists('checkout_url', $response_body_arr)) {
-            $redirect_url = $response_body_arr['checkout_url'];
+        if (array_key_exists('token', $response_body_arr['data'])) {
+            $redirect_url = $response_body_arr['url'];
             $currency = $response_body_arr['currency'];
             $total = $response_body_arr['total'];
             $order->update_meta_data( 'reference', $response_body_arr['reference'] );
