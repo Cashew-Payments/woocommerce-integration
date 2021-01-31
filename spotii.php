@@ -33,7 +33,6 @@ add_filter('woocommerce_payment_gateways', 'spotii_add_gateway_class');
 function spotii_add_gateway_class($gateways){
 
     $gateways[] = 'WC_Spotii_Gateway_Shop_Now_Pay_Later';
-    $gateways[] = 'WC_Spotii_Gateway_Pay_Now';
     return $gateways;
 
 }
@@ -45,7 +44,7 @@ add_action('plugins_loaded', 'spotii_init_gateway_class');
 
 function spotii_init_gateway_class(){
 
-    if (class_exists('WC_Spotii_Gateway_Pay_Now') || class_exists('WC_Spotii_Gateway_Shop_Now_Pay_Later') || !class_exists('WC_Payment_Gateway')) return;
+    if (class_exists('WC_Spotii_Gateway_Shop_Now_Pay_Later') || !class_exists('WC_Payment_Gateway')) return;
 
     define( 'WC_SPOTII_DIR_PATH', plugin_dir_path( __FILE__ ) );
     /*
@@ -62,7 +61,6 @@ function spotii_init_gateway_class(){
     /*
     * Load Spotii Gateway
     */
-    require_once WC_SPOTII_DIR_PATH . '/includes/gateways/class-wc-pay-now.php';
 	require_once WC_SPOTII_DIR_PATH . '/includes/gateways/class-wc-shop-now-pay-later.php';
     /*
     * Load Spotii function 

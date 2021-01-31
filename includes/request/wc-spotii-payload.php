@@ -61,9 +61,6 @@ function get_checkout_payload($order, $th, $type, $addon){
             )
         )
     );
-    if ($type == "Pay Now") {
-        $body['plan'] = "pay-now";
-    }
     foreach ($order->get_items() as $item) {
         $product = wc_get_product($item['product_id']);
         $lines[] = array(

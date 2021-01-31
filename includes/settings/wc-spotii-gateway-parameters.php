@@ -4,10 +4,10 @@
 */
 function gatewayParameters($th, $type = null){
 
-    $th->id = $type == "Pay Now" ? "spotii_pay_now" : 'spotii_shop_now_pay_later';
+    $th->id = 'spotii_shop_now_pay_later';
     $type == "Shop Now Pay Later" ? $th->icon = 'https://spotii.me/img/logo.svg' : '';
     $th->method_title = 'Spotii';
-    $th->method_description =  $type == "Pay Now" ? "Pay instant payment with spotii." : 'Have your customers pay over time for their purchases. No hidden fees, no interest.';
+    $th->method_description =  'Have your customers pay over time for their purchases. No hidden fees, no interest.';
 
     // Options supported by Spotii payment gateway
     $th->supports = array(
@@ -20,10 +20,8 @@ function gatewayParameters($th, $type = null){
 
     // Load settings
     $th->init_settings();
-    $th->title = $th->get_option('title', $type == "Pay Now" ? "Spotii: Pay Now" : 'Shop now, Pay later');
-    if ($type != "Pay Now") {
-        $th->description = $th->get_option('description', 'Shop now, Pay later');
-    }
+    $th->title = $th->get_option('title', 'Shop now, Pay later');
+    $th->description = $th->get_option('description', 'Shop now, Pay later');
     $th->enabled = $th->get_option('enabled', 'yes');
     $th->testMode = false;
     $th->testMode = 'yes' === $th->get_option('testmode', 'yes');
