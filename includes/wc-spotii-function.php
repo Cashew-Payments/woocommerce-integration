@@ -61,7 +61,7 @@ function admin_js()
         jQuery(document).ready(function($) {
             //Conditional calue 
             $("input[id*='order_minimum']").on("change paste keyup", function() {
-                if (parseFloat($("input[id*='order_minimum']").val()) < 200) {
+                if (parseFloat($("input[id*='order_minimum']").val()) < 0) {
                     if (!$('#error-code-min').length) {
                         $("#woocommerce_spotii_shop_now_pay_later_order_minimum").parent().parent().append("<p id='error-code-min' style='color:red;'>Please enter a value more than 200 AED</p>");
                     } else {
