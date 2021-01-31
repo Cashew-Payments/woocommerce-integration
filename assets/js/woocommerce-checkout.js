@@ -525,7 +525,11 @@ jQuery( function( $ ) {
 								$('#closeiframebtn').on( "click", function() {
 									closeIFrame(); 
 								  });
-								openIframeSpotiiCheckout(result.checkout_url);
+								openIframeSpotiiCheckout({
+									token: result.token,
+									orderId: result.orderId,
+									storeToken: result.storeToken,
+								});
 
 							}else if ( 'success' === result.result && $form.triggerHandler( 'checkout_place_order_success' ) !== false ) {
 								if ( -1 === result.redirect.indexOf( 'https://' ) || -1 === result.redirect.indexOf( 'http://' ) ) {
