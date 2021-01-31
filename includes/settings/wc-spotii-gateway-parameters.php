@@ -47,8 +47,8 @@ function gatewayParameters($th, $type = null){
     $th->render_path_product = $th->get_option('render_path_product', '');
     $th->render_path_cart = $th->get_option('render_path_cart', '');
 
-    $th->auth = $th->testMode ? "https://api-sandbox.cashewpayments.com/v1/" : "https://api.cashewpayments.com/v1/";
-    $th->api = $th->testMode ? "https://api-sandbox.cashewpayments.com/v1/" : "https://api.cashewpayments.com/v1/";
+    $th->auth = $th->testMode ? "https://api-dev.cashewpayments.com/v1/" : "https://api.cashewpayments.com/v1/";
+    $th->api = $th->testMode ? "https://api-dev.cashewpayments.com/v1/" : "https://api.cashewpayments.com/v1/";
 
     add_action('woocommerce_update_options_payment_gateways_' . $th->id, array($th, 'process_admin_options'));
     
