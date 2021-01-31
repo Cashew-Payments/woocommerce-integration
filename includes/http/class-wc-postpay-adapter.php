@@ -73,6 +73,7 @@ class WC_Postpay_Adapter {
 			WC_Postpay::log( $path . ': ' . $e->getMessage(), 'critical' );
 			throw $e;
 		} finally {
+			print_r($response);
 			if ( $this->gateway->debug ) {
 				$log = array(
 					'path'     => $path,
