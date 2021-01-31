@@ -70,7 +70,7 @@ class Request
         $this->auth = $auth;
         $this->apiVersion = $apiVersion ?: Postpay::DEFAULT_API_VERSION;
         $this->sandbox = $sandbox;
-        echo $this->auth;
+        print_r($this->auth);
     }
 
     /**
