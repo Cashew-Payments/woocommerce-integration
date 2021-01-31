@@ -9,7 +9,7 @@ class WC_Spotii_Gateway_Shop_Now_Pay_Later extends WC_Payment_Gateway
     {
 
         add_action('woocommerce_api_wc_spotii_gateway_shop_now_pay_later', array($this, 'spotii_response_handler'));
-        gatewayParameters($this, "Shop Now Pay Later");
+        gatewayParameters($this);
     }
     /**
      * Define fields and labels in Admin Panel
@@ -23,7 +23,7 @@ class WC_Spotii_Gateway_Shop_Now_Pay_Later extends WC_Payment_Gateway
      */
     public function get_icon()
     {
-        $icon = $this->icon ? '<img src="' . WC_HTTPS::force_https_url($this->icon) . '" alt="' . esc_attr($this->get_title()) . '" class="spotii-checkout-img" />' : '';
+        $icon = $this->icon ? '<img src="' . WC_HTTPS::force_https_url($this->icon) . '" alt="' . esc_attr($this->get_title()) . '" />' : '';
         return apply_filters('woocommerce_gateway_icon', $icon, $this->id);
     }
     /*
@@ -33,16 +33,10 @@ class WC_Spotii_Gateway_Shop_Now_Pay_Later extends WC_Payment_Gateway
     {
         if (get_locale() == 'ar') {
             $timesch = 'جدول المدفوعات';
-            $align = 'right';
         } else {
             $timesch = 'Pay in installments with zero interest';
-            $align = 'left';
         }
-        echo '
-            <div class="spotii-cover" id="cover" style="text-align:\'' . $align . '\';">
-                <span class="spotii-payment-text" >' . $timesch . '</span>
-            </div>
-            ';
+        echo '<div id="cover"><span >' . $timesch . '</span></div>';
     }
     /*
     * Process payments: magic begins here

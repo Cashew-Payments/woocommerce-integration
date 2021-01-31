@@ -26,12 +26,12 @@ function form_fields($th)
             'description' => 'This controls the description which the user sees during checkout',
             'default' => 'cashew Payments, buy now, pay later',
         ),
-        'testmode' => array(
+        'sandbox' => array(
             'title' => 'Sandbox',
-            'label' => 'Enable Test Mode',
+            'label' => 'Enable sandbox',
             'type' => 'checkbox',
             'description' => 'Use sandbox api for test',
-            'default' => 'no',
+            'default' => 'yes',
             'desc_tip' => false,
         ),
         'store_url' => array(

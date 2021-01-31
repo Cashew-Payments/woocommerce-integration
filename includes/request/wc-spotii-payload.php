@@ -19,43 +19,42 @@ function get_checkout_payload($order, $th, $type, $addon)
         "orderReference" => $order_id,
         "totalAmount" => round($total, 4),
         "currencyCode" => $currency,
-        "confirm_callback_url" => $notify_url . "&o=" . $order->get_id() . "&s=s",
-        "reject_callback_url" => $notify_url . "&o=" . $order->get_id() . "&s=f",
+        "taxAmount" => $order->get_total_tax(),
+        "language" => get_locale(),
+        "merchant" => array(
+            "confirmationUrl" => $notify_url . "&o=" . $order->get_id() . "&s=s",
+            "cancelUrl" => $notify_url . "&o=" . $order->get_id() . "&s=f",
+        ),
+        "discount" => $order->get_total_discount(),
+        "customer" => array(
+            "firstName" => $order->get_user()->first_name ? $order->get_user()->first_name : $order->get_billing_first_name(),
+            "lastName" => $order->get_user()->last_name ? $order->get_user()->last_name : $order->get_billing_last_name(),
+            "email" => $order->get_user()->user_email ? $order->get_user()->user_email : $order->get_billing_email(),
+            "mobileNumber" => $order->get_billing_phone(),
+        ),
+        "billingAddress" => array(
+            "title" => "",
+            "firstName" => $order->get_billing_first_name(),
+            "lastName" => $order->get_billing_last_name(),
+            "line1" => $order->get_billing_address_1(),
+            "line2" => $order->get_billing_address_2(),
+            "city" => $order->get_billing_city(),
+            "state" => $order->get_billing_state(),
+            "postalcode" => $order->get_billing_postcode(),
+            "country" => $order->get_billing_country(),
+            "phone" => $order->get_billing_phone(),
+        ),
 
         // Order
-        "order" => array(
-            "tax_amount" => $order->get_total_tax(),
+        "shipping" => array(
             "shipping_amount" => $order->get_shipping_total(),
-            "discount" => $order->get_total_discount(),
-            "customer" => array(
-                "first_name" => $order->get_user()->first_name ? $order->get_user()->first_name : $order->get_billing_first_name(),
-                "last_name" => $order->get_user()->last_name ? $order->get_user()->last_name : $order->get_billing_last_name(),
-                "email" => $order->get_user()->user_email ? $order->get_user()->user_email : $order->get_billing_email(),
-                "phone" => $order->get_billing_phone(),
-            ),
-
-            "billingAddress" => array(
+            "address" => array(
                 "title" => "",
-                "first_name" => $order->get_billing_first_name(),
-                "last_name" => $order->get_billing_last_name(),
-                "line1" => $order->get_billing_address_1(),
-                "line2" => $order->get_billing_address_2(),
-                "line3" => "",
-                "line4" => $order->get_billing_city(),
-                "state" => $order->get_billing_state(),
-                "postcode" => $order->get_billing_postcode(),
-                "country" => $order->get_billing_country(),
-                "phone" => $order->get_billing_phone(),
-            ),
-
-            "shipping_address" => array(
-                "title" => "",
-                "first_name" => $order->get_shipping_first_name(),
-                "last_name" => $order->get_shipping_last_name(),
+                "firstName" => $order->get_shipping_first_name(),
+                "lastName" => $order->get_shipping_last_name(),
                 "line1" => $order->get_shipping_address_1(),
                 "line2" => $order->get_shipping_address_2(),
-                "line3" => "",
-                "line4" => $order->get_shipping_city(),
+                "city" => $order->get_shipping_city(),
                 "state" => $order->get_shipping_state(),
                 "postcode" => $order->get_shipping_postcode(),
                 "country" => $order->get_shipping_country(),
@@ -71,12 +70,12 @@ function get_checkout_payload($order, $th, $type, $addon)
             "title" => $product->get_title(),
             "upc" => $product->get_sku(),
             "quantity" => $item->get_quantity(),
-            "price" => $product->get_price(),
+            "unitPrice" => $product->get_price(),
             "currency" => $order->get_currency(),
             "image_url" => "",       //$product->get_image(),
         );
     }
-    $body['order']['lines'] = $lines;
+    $body['items'] = $lines;
     $payload = array(
         'method' => 'POST',
         'headers' => $headers,
