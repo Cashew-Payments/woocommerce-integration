@@ -34,13 +34,6 @@ function form_fields($th, $type = null)
             'default' => 'no',
             'desc_tip' => false,
         ),
-        'add_aed_key' => array(
-            'title' => 'Add keys for AED currency',
-            'label' => 'Enable Keys',
-            'type' => 'checkbox',
-            'default' => 'no',
-            'desc_tip' => false,
-        ),
         'public_key_test_aed' => array(
             'title' => 'Sandbox Public Key',
             'type' => 'text',
