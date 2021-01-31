@@ -51,7 +51,7 @@ function processPayment($order_id, $th, $type = null, $addon){
             $order->update_meta_data( 'reference', $response_body_arr['data']['orderId'] );
             $order->update_meta_data( 'token', $th->token );
             $order->save();
-            return array('result' => 'success', 'redirect' => "", 'token' => $th->token, "checkout_url" => $redirect_url, "orderId" => $response_body_arr['data']['orderId'], "api" => $th->api,"cancelURL" => $order->get_cancel_order_url());
+            return array('result' => 'success', 'redirect' => "", 'token' => $response_body_arr['data']['token'], 'storeToken' => $th->token, "checkout_url" => $redirect_url, "orderId" => $response_body_arr['data']['orderId'], "api" => $th->api,"cancelURL" => $order->get_cancel_order_url());
         } else {
 
             $errorMin = $lang == 'ar'? "المبلغ الاجمالي في سلتك أقل من الحد الادنى لاستخدام سبوتي: سبوتي متاح للطلبات بقيمة اعلى من 200 درهم اماراتي أو 200 ريال سعودي. بقليل من التسوق يمكن تقسيم دفعاتك على أربع أقساط  خالية من التكاليف الاضافية. " : "You don't quite have enough in your basket: Spotii is available for purchases over AED 200. With a little more shopping, you can split your payment over 4 cost-free instalments." ;
