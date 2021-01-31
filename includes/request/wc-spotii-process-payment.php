@@ -48,19 +48,11 @@ function processPayment($order_id, $th, $type = null, $addon){
         $response_body_arr = json_decode($response_body, true);
 
         if (array_key_exists('token', $response_body_arr['data'])) {
-            $redirect_url = $response_body_arr['url'];
-            $currency = $response_body_arr['currency'];
-            $total = $response_body_arr['total'];
-            $order->update_meta_data( 'reference', $response_body_arr['orderId'] );
+            $redirect_url = $response_body_arr['data']['url'];
+            $order->update_meta_data( 'reference', $response_body_arr['data']['orderId'] );
             $order->update_meta_data( 'token', $th->token );
             $order->save();
-            $prefix = (strpos($redirect_url,'?') !== false) ? '&' : '/?';
-            if($lang == 'ar'){
-                $redirect_url .= $prefix.'lang=ar';
-            }else{
-                $redirect_url .= $prefix.'lang=en';
-            }
-            return array('result' => 'success', 'redirect' => "", 'token' => $th->token, "checkout_url" => $redirect_url, "orderId" => $response_body_arr['orderId'], "api" => $th->api,"cancelURL" => $order->get_cancel_order_url());
+            return array('result' => 'success', 'redirect' => "", 'token' => $th->token, "checkout_url" => $redirect_url, "orderId" => $response_body_arr['data']['orderId'], "api" => $th->api,"cancelURL" => $order->get_cancel_order_url());
         } else {
 
             $errorMin = $lang == 'ar'? "المبلغ الاجمالي في سلتك أقل من الحد الادنى لاستخدام سبوتي: سبوتي متاح للطلبات بقيمة اعلى من 200 درهم اماراتي أو 200 ريال سعودي. بقليل من التسوق يمكن تقسيم دفعاتك على أربع أقساط  خالية من التكاليف الاضافية. " : "You don't quite have enough in your basket: Spotii is available for purchases over AED 200. With a little more shopping, you can split your payment over 4 cost-free instalments." ;
