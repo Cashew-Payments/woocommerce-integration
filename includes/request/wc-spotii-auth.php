@@ -27,9 +27,9 @@ echo 'DOING AUTH';
             'headers' => $headers,
             'timeout' => 20
         );
-print_r($payload);
-        $response = wp_remote_post($auth_url, $payload);
 
+        $response = wp_remote_post($auth_url, $payload);
+        print_r($response);
         if (is_wp_error($response)) {
             error_log("Exception [WP_Error_Spotii Authentication]: " . $response);
             throw new Exception(__('Network connection issue'));
