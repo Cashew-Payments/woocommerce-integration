@@ -34,19 +34,11 @@ function form_fields($th, $type = null)
             'default' => 'no',
             'desc_tip' => false,
         ),
-        'public_key_test_aed' => array(
-            'title' => 'Sandbox Public Key',
-            'type' => 'text',
-        ),
-        'private_key_test_aed' => array(
-            'title' => 'Sandbox Private Key',
-            'type' => 'password',
-        ),
-        'public_key_live_aed' => array(
+        'store_url' => array(
             'title' => 'Live Public Key',
             'type' => 'text',
         ),
-        'private_key_live_aed' => array(
+        'cashew_private_key' => array(
             'title' => 'Live Private Key',
             'type' => 'password',
         )
@@ -58,15 +50,6 @@ function form_fields($th, $type = null)
             'type' => 'text',
             'default' => '200',
             'description' => 'The order minimum is set in AED'
-        ),
-        'widget_theme' => array(
-            'title' => 'Widget Theme',
-            'type' => 'select',
-            'default' => 'default',
-            'options' => array(
-                'default' => 'Default',
-                'dark' => 'Dark'
-            )
         ),
         'widget_text' => array(
             'title' => 'Widget text',

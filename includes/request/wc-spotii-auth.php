@@ -7,23 +7,18 @@ function spotiiAuth($th, $addon = "", $currency = null)
 
     $auth_url =  $th->auth . 'identity/store/authorize';
     if ($th->enabled == "yes") {
-        if ($currency == "SAR") {
-            $public_key =  $th->testMode ? $th->testPublicKeySAR : $th->publicKeySAR;
-            $private_key = $th->testMode ? $th->testPrivateKeySAR : $th->privateKeySAR;
-        } else {
-            $public_key =  $th->testMode ? $th->testPublicKeyAED : $th->publicKeyAED;
-            $private_key = $th->testMode ? $th->testPrivateKeyAED : $th->privateKeyAED;
-        }
+        $storeUrl =  $th->storeUrl;
+        $cashewPrivateKey = $th->cashewPrivateKey;
         if (empty($public_key) || empty($private_key)) {
-            error_log("Keys does not exist [WP_Error_Spotii Authentication]: " . $response);
+            error_log("Keys does not exist [WP_Error_Spotii Authentication]: ");
             throw new Exception(__('Keys does not exist'));
         }
 
         $headers = array(
             'Accept' => 'application/json',
             'Content-Type' => 'application/json',
-            'storeUrl' => $public_key,
-            'cashewSecretKey' => $private_key
+            'storeUrl' => $storeUrl,
+            'cashewSecretKey' => $cashewPrivateKey
         );
 
         $payload = array(
@@ -53,7 +48,7 @@ function spotiiAuth($th, $addon = "", $currency = null)
             error_log("Error on authentication: " . $response_body);
         }
     } else {
-        error_log("Response Body Empty [WP_Error_Spotii Authentication]: " . $response);
+        error_log("Response Body Empty [WP_Error_Spotii Authentication]: ");
         throw new Exception(__('Plugin disabled'));
     }
 }

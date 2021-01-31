@@ -28,10 +28,8 @@ function gatewayParameters($th, $type = null)
     $th->testMode = 'yes' === $th->get_option('testmode', 'yes');
     $th->order_min = $th->get_option('order_minimum', '');
     // AED api 
-    $th->publicKeyAED = $th->get_option('public_key_live_aed', '');
-    $th->privateKeyAED = $th->get_option('private_key_live_aed', '');
-    $th->testPublicKeyAED = $th->get_option('public_key_test_aed', '');
-    $th->testPrivateKeyAED = $th->get_option('private_key_test_aed', '');
+    $th->storeUrl = $th->get_option('store_url', '');
+    $th->cashewPrivateKey = $th->get_option('cashew_private_key', '');
     // Widget settings
     $th->widget_theme = $th->get_option('widget_theme', '');
     $th->widget_text = $th->get_option('widget_text', '');
