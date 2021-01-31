@@ -4,11 +4,12 @@
 */
 function spotiiAuth($th, $addon = "", $currency = null)
 {
-
+echo 'DOING AUTH';
     $auth_url =  $th->auth . 'identity/store/authorize';
     if ($th->enabled == "yes") {
         $storeUrl =  $th->storeUrl;
         $cashewPrivateKey = $th->cashewPrivateKey;
+        echo $storeUrl.' '.$cashewPrivateKey;
         if (empty($storeUrl) || empty($cashewPrivateKey)) {
             error_log("Keys does not exist [WP_Error_Spotii Authentication]: ");
             throw new Exception(__('Keys does not exist'));
@@ -26,7 +27,7 @@ function spotiiAuth($th, $addon = "", $currency = null)
             'headers' => $headers,
             'timeout' => 20
         );
-
+print_r($payload);
         $response = wp_remote_post($auth_url, $payload);
 
         if (is_wp_error($response)) {
