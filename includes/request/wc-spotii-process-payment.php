@@ -30,7 +30,6 @@ function processPayment($order_id, $th, $type = null, $addon){
         $url = $th->api . 'checkouts/';
 
         $payload = get_checkout_payload($order, $th, $type, $addon);
-        print_r($payload);
         $response = wp_remote_post($url, $payload);
         add_action('woocommerce_api_' . $addon, array($th, 'spotii_response_handler'));
 

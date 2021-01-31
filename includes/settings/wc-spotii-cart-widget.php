@@ -26,6 +26,6 @@ if(get_locale() == 'ar'){
   echo '<div id="spotii-product-widget">'.
 	'</div><div id="spotii-product-widget-price" style="display:none;">'. $instal . '</div>'.
 	'<script>window.spotiiConfig = {targetXPath: [\'#spotii-product-widget-price\'], renderToPath: [\''.$render.'\'],currency: "'.$currency.'",templateLine:"'.$widget_text.'",theme:"'.$theme.'",minNote:"'.$custom_note_en.'",howItWorksURL : "'.$url.'",};</script>'.
-	' <script>(function(w,d,s) {var f=d.getElementsByTagName(s)[0];var a=d.createElement(\'script\');a.async=true;a.src=\'https://widget.spotii.me/v1/javascript/priceWidget-en.js\';f.parentNode.insertBefore(a,f);}(window, document, \'script\'));</script> ';
+	' <script>(function(w,d,s) {var f=d.getElementsByTagName(s)[0];var a=d.createElement(\'script\');a.async=true;a.src=\'https://s3-eu-west-1.amazonaws.com/cdn-dev.cashewpayments.com/widgets/woocommerce.checkout.min.js\';f.parentNode.insertBefore(a,f);}(window, document, \'script\'));</script> ';
 		}
 }
