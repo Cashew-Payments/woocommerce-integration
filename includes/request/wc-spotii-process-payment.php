@@ -22,6 +22,7 @@ function processPayment($order_id, $th, $type = null, $addon)
 
     $orderId = $order_id;
     // validate currency 
+    echo validate_curr($currency) . ' ' . $currency;
     if (!validate_curr($currency)) {
         $errorCurr = $lang == 'ar' ? "سبوتي لا يدعم هذه العملة" : "Currency is not supported by Spotii";
         error_log("Exception [WP_Error_Spotii Process Payment] " . $errorCurr . $currency);
