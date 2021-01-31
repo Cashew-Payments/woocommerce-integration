@@ -182,6 +182,8 @@ function openIFrame() {
 		btn.addEventListener("click", function(e) {
 			e.preventDefault();
 			removeOverlay();
+			showOverlay();
+			openIFrame();
 		});
 
 		[].forEach.call(document.getElementsByClassName("lightbox"), function(el) {
