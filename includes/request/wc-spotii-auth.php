@@ -29,7 +29,7 @@ echo 'DOING AUTH';
         );
 
         $response = wp_remote_post($auth_url, $payload);
-        print_r($response);
+        print_r($payload);
         if (is_wp_error($response)) {
             error_log("Exception [WP_Error_Spotii Authentication]: " . $response);
             throw new Exception(__('Network connection issue'));
