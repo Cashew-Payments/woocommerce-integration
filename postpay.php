@@ -93,7 +93,6 @@ class WC_Postpay {
 		}
 
 		include_once WC_POSTPAY_DIR_PATH . 'includes/gateways/class-wc-postpay-gateway.php';
-		include_once WC_POSTPAY_DIR_PATH . 'includes/gateways/class-wc-postpay-pay-now.php';
 		include_once WC_POSTPAY_DIR_PATH . 'includes/gateways/class-wc-postpay-split-payment.php';
 
 		array_push( $methods, 'WC_Postpay_Pay_Now', 'WC_Postpay_Split_Payment' );
