@@ -236,6 +236,7 @@ class Request
         if ($this->method === 'GET') {
             $path = Url::addParamsToUrl($path, $this->params);
         }
+        echo $this->getApiUrl() . $path;
         return $this->getApiUrl() . $path;
     }
 }
