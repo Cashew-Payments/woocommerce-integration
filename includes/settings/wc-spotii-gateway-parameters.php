@@ -26,7 +26,7 @@ function gatewayParameters($th, $type = null)
     $th->enabled = $th->get_option('enabled', 'yes');
     $th->testMode = false;
     $th->testMode = 'yes' === $th->get_option('testmode', 'yes');
-    $th->order_min = $th->get_option('order_minimum', '');echo $th->get_option('order_maximum', '');
+    $th->order_min = $th->get_option('order_minimum', '');
     $th->order_max = $th->get_option('order_maximum', '');
     // AED api 
     $th->storeUrl = $th->get_option('store_url', '');
