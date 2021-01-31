@@ -12,7 +12,7 @@ return array(
 		'version' => WC_POSTPAY_VERSION,
 	),
 	'wc-postpay-init'     => array(
-		'src'     => WC_POSTPAY_DIR_URL . 'assets/js/postpay.js',
+		'src'     => WC_POSTPAY_DIR_URL . 'assets/js/cashewpayments.js',
 		'deps'    => array( 'wc-postpay-js', 'jquery' ),
 		'version' => WC_POSTPAY_VERSION,
 	),
