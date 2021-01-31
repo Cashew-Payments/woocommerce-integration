@@ -36,7 +36,7 @@ class WC_Postpay_Request_Checkout {
 			'tax_amount'      => WC_Postpay_Adapter::decimal( $order->get_total_tax() ),
 			'currency'        => $order->get_currency(),
 			'billing_address' => WC_Postpay_Request_Address::build( $order->get_address( 'billing' ) ),
-			'customer'        => $customer,
+			'customer'        => WC_Postpay_Request_Customer::build( $order->get_user_id() ),
 			'items'           => array_map(
 				function( $item ) use ( $order ) {
 					return WC_Postpay_Request_Item::build( $order, $item );
