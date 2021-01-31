@@ -7,8 +7,8 @@ function processRefund($order_id, $amount = null, $reason = '', $th)
 {
 
     $order = wc_get_order($order_id);
-    print_r($order);
-    $url = $th->api . 'orders/' . $order_id . '/refund';
+    print_r($order->get_meta('reference'));
+    $url = $th->api . 'refunds/' . $order_id . '/refund';
 
     $auth = spotiiAuth($th, $order->get_payment_method(), $order->get_currency());
     $headers = getHeader($th);
