@@ -36,7 +36,7 @@ class WC_Cashew_Gateway extends WC_Payment_Gateway
         } else {
             $timesch = 'Pay in installments with zero interest';
         }
-        echo '<div id="cover"><span >' . $timesch . '</span></div>';
+        echo '<div id="cover"><span>' . $timesch . '</span></div>';
     }
     /*
     * Process payments: magic begins here

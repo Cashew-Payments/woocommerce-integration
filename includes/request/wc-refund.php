@@ -36,12 +36,15 @@ function processRefund($order_id, $amount = null, $reason = '', $th)
 
     // Check for capture success 
     if ($res['status'] == 'success') {
-        wc_add_notice(__('Refund Success: ', 'woothemes') . "Refund complete", 'success');
+        if (function_exists('wc_add_notice')) {
+            wc_add_notice(__('Refund Success: ', 'woothemes') . "Refund complete", 'success');
+        }
         return true;
     } else {
         $order->add_order_note('Refund failed: ' . $response_body["message"]);
-        wc_add_notice(__('Refund Error: ', 'woothemes') . "Refund with cashew failed", 'error');
-
+        if (function_exists('wc_add_notice')) {
+            wc_add_notice(__('Refund Error: ', 'woothemes') . "Refund with cashew failed", 'error');
+        }
         error_log("Error on refund: " . $response_body);
         return false;
     }
