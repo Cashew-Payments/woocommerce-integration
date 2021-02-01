@@ -119,19 +119,8 @@ function render() {
     container.appendChild(backdrop),
     ((wrap = document.createElement("div")).className = "spotii-popup__wrap"),
     container.appendChild(wrap),
-    (content = renderContent()),
-    wrap.appendChild(content),
     document.body.appendChild(container),
     show();
-}
-
-function renderContent() {
-  var o = document.createElement("div");
-  return (
-    (o.id = "spotii-popup__content"),
-    (o.className = "spotii-popup__content"),
-    o
-  );
 }
 
 function show() {
@@ -187,48 +176,7 @@ jQuery(document).ready(function (o) {
       i
     );
   }
-
-  function t() {
-    const o = e(
-        "p",
-        {},
-        (function () {
-          return navigator.vendor.startsWith("Apple");
-        })()
-          ? "Redirecting you to Spotii..."
-          : "Checking your payment status with Spotii..."
-      ),
-      t = e(
-        "span",
-        {
-          className: "sptii-text",
-        },
-        o
-      ),
-      i = e(
-        "span",
-        {
-          className: "sptii-loading",
-        },
-        (function () {
-          const o = e("span");
-          return (
-            (o.className = "sptii-loading-icon"),
-            (o.innerHTML =
-              '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 1024 1024"><path d="M988 548c-19.9 0-36-16.1-36-36 0-59.4-11.6-117-34.6-171.3a440.45 440.45 0 0 0-94.3-139.9 437.71 437.71 0 0 0-139.9-94.3C629 83.6 571.4 72 512 72c-19.9 0-36-16.1-36-36s16.1-36 36-36c69.1 0 136.2 13.5 199.3 40.3C772.3 66 827 103 874 150c47 47 83.9 101.8 109.7 162.7 26.7 63.1 40.2 130.2 40.2 199.3.1 19.9-16 36-35.9 36z" fill="orange" /></svg>'),
-            o
-          );
-        })()
-      ),
-      n = e(
-        "span",
-        {
-          className: "sptii-spinnerText",
-        },
-        t
-      );
-    return n.appendChild(i), n;
-  }
+  
   (showOverlay = function () {}),
     (openCashewCheckout = function (resp) {
       thirdPartySupported(root)
