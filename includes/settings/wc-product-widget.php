@@ -2,8 +2,9 @@
 /*
 /* add product widget 
 */
-function add_product_widget()
+function add_product_widget($th)
 {
+    print_r($th);
     global $product;
     $price = $product->get_price();
     $language = explode('_', get_locale())[0];
