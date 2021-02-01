@@ -21,12 +21,12 @@ $lang = get_locale();
 function wc_cashew_script()
 {
     if (is_checkout()) {
-        wp_enqueue_script('cashew-checkout', 'https://s3-eu-west-1.amazonaws.com/cdn-dev.cashewpayments.com/widgets/woocommerce.checkout.min.js', array('jquery'), '0.01', true);
+        wp_enqueue_script('cashew-checkout', 'https://s3-eu-west-1.amazonaws.com/cdn-dev.cashewpayments.com/widgets/woocommerce.checkout.min.js', array('jquery'), '0.02', true);
     }
-    wp_enqueue_script('cashew-checkout', plugin_dir_url(__FILE__) . '../assets/js/cashew-checkout.js', array('jquery'), '0.01', true);
+    wp_enqueue_script('cashew-checkout', plugin_dir_url(__FILE__) . '../assets/js/cashew-checkout.js', array('jquery'), '0.02', true);
     if (is_checkout()) {
         wp_deregister_script('wc-checkout');
-        wp_enqueue_script('wc-checkout', plugin_dir_url(__FILE__) . '../assets/js/woocommerce-checkout.js', array('jquery'), '0.01', true);
+        wp_enqueue_script('wc-checkout', plugin_dir_url(__FILE__) . '../assets/js/woocommerce-checkout.js', array('jquery'), '0.02', true);
     }
     wp_enqueue_script('jquery');
     wp_localize_script('jquery', 'cashew_ajax', array('ajax_url' => admin_url('admin-ajax.php')));
