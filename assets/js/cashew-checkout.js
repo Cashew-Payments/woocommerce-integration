@@ -111,57 +111,6 @@ var container,
     });
 });
 
-function render() {
-  ((container = document.createElement("div")).className = "spotii-popup"),
-    (container.id = "spotii-popup__container"),
-    ((backdrop = document.createElement("div")).className =
-      "spotii-popup__backdrop"),
-    container.appendChild(backdrop),
-    ((wrap = document.createElement("div")).className = "spotii-popup__wrap"),
-    container.appendChild(wrap),
-    document.body.appendChild(container),
-    show();
-}
-
-function show() {
-  var o = document.getElementById("spotii-popup__content");
-  o.classList.add("spotii-animation-zoom-in"),
-    (document.getElementById("spotii-popup__container").style.display =
-      "block"),
-    window.requestAnimationFrame(function () {
-      o.classList.add("spotii-animation-zoom-in-enter");
-    }),
-    document.addEventListener("keydown", onDocumentKeyDown, !1);
-}
-
-function hide() {
-  document
-    .getElementById("spotii-popup__content")
-    .classList.remove(
-      "spotii-animation-zoom-in",
-      "spotii-animation-zoom-in-enter"
-    ),
-    (document.getElementById("spotii-popup__container").style.display = "none"),
-    document.removeEventListener("keydown", onDocumentKeyDown, !1),
-    destroy();
-}
-
-function onDocumentKeyDown(o) {
-  27 === o.keyCode && hide();
-}
-
-function destroy() {
-  closeBtn.removeEventListener("click", hide, !1),
-    document.removeEventListener("keydown", onDocumentKeyDown, !1),
-    container.parentElement.removeChild(container),
-    styles.parentElement.removeChild(styles),
-    (container = null),
-    (backdrop = null),
-    (wrap = null),
-    (content = null),
-    (closeBtn = null),
-    (styles = null);
-}
 jQuery(document).ready(function (o) {
   function e(o, e, t) {
     const i = document.createElement(o);
@@ -176,7 +125,7 @@ jQuery(document).ready(function (o) {
       i
     );
   }
-  
+
   (showOverlay = function () {}),
     (openCashewCheckout = function (resp) {
       thirdPartySupported(root)
