@@ -14,7 +14,6 @@ function processRefund($order_id, $amount = null, $reason = '', $th)
     $body = array(
         "orderId" => $order->get_meta('reference'),
         "refundAmount" => $amount,
-        "currencyCode" => $order->get_currency(),
     );
     $payload = array(
         'method' => 'POST',
@@ -36,7 +35,7 @@ function processRefund($order_id, $amount = null, $reason = '', $th)
     }
 
     // Check for capture success 
-    if ($res['status'] == 'SUCCESS') {
+    if ($res['status'] == 'success') {
         wc_add_notice(__('Refund Success: ', 'woothemes') . "Refund complete", 'success');
         return true;
     } else {
