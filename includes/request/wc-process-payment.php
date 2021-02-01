@@ -56,6 +56,7 @@ function processPayment($order_id, $th, $type = null, $addon)
         if (array_key_exists('token', $response_body_arr['data'])) {
             $redirect_url = $response_body_arr['data']['url'];
             $order->update_meta_data('reference', $response_body_arr['data']['orderId']);
+            $order->update_meta_data('token', $response_body_arr['data']['token']);
             $order->save();
             return array('result' => 'success', 'redirect' => "", 'token' => $response_body_arr['data']['token'], 'storeToken' => $th->token, "checkout_url" => $redirect_url, "orderId" => $response_body_arr['data']['orderId'], "api" => $th->api, "cancelURL" => $order->get_cancel_order_url(), "sucessURL" => $order->get_checkout_order_received_url());
         } else {
