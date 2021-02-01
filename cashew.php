@@ -19,8 +19,8 @@
  */
 defined('ABSPATH') || exit;
 
-require __DIR__ . '/includes/settings/wc-spotii-cart-widget.php';
-require __DIR__ . '/includes/settings/wc-spotii-product-widget.php';
+require __DIR__ . '/includes/settings/wc-cart-widget.php';
+require __DIR__ . '/includes/settings/wc-product-widget.php';
 
 add_filter('woocommerce_payment_gateways', 'cashew_add_gateway_class');
 
@@ -45,20 +45,20 @@ function cashew_init_gateway_class()
     /*
     /* Include files
     */
-    include_once WC_CASHEW_DIR . 'includes/settings/wc-spotii-gateway-parameters.php';
+    include_once WC_CASHEW_DIR . 'includes/settings/wc-gateway-parameters.php';
     include_once WC_CASHEW_DIR . 'includes/request/wc-authentication.php';
     include_once WC_CASHEW_DIR . 'includes/settings/wc-admin-fields.php';
-    include_once WC_CASHEW_DIR . 'includes/settings/wc-spotii-validation.php';
+    include_once WC_CASHEW_DIR . 'includes/settings/wc-validations.php';
     include_once WC_CASHEW_DIR . 'includes/request/wc-checkout.php';
-    include_once WC_CASHEW_DIR . 'includes/request/wc-spotii-process-payment.php';
-    include_once WC_CASHEW_DIR . 'includes/request/wc-spotii-response-handler.php';
-    include_once WC_CASHEW_DIR . 'includes/request/wc-spotii-refund.php';
+    include_once WC_CASHEW_DIR . 'includes/request/wc-process-payment.php';
+    include_once WC_CASHEW_DIR . 'includes/request/wc-response-handler.php';
+    include_once WC_CASHEW_DIR . 'includes/request/wc-refund.php';
     /*
     * Load cashew Gateway
     */
     include_once WC_CASHEW_DIR . '/includes/gateways/class-wc-cashew.php';
     /*
-    * Load Spotii function 
+    * Load helper
     */
     include_once WC_CASHEW_DIR . '/includes/wc-helper.php';
 }
