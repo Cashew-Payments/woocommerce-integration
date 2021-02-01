@@ -16,13 +16,6 @@ const thirdPartySupported = (root) => {
     root.appendChild(frame);
   });
 };
-var container,
-  backdrop,
-  styles,
-  wrap,
-  closeBtn,
-  content,
-  first = !0;
 
 !(function (o) {
   "function" == typeof define && define.amd

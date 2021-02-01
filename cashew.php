@@ -47,9 +47,9 @@ function cashew_init_gateway_class()
     */
     include_once WC_CASHEW_DIR . 'includes/settings/wc-spotii-gateway-parameters.php';
     include_once WC_CASHEW_DIR . 'includes/request/wc-authentication.php';
-    include_once WC_CASHEW_DIR . 'includes/settings/wc-spotii-form-fields.php';
+    include_once WC_CASHEW_DIR . 'includes/settings/wc-admin-fields.php';
     include_once WC_CASHEW_DIR . 'includes/settings/wc-spotii-validation.php';
-    include_once WC_CASHEW_DIR . 'includes/request/wc-spotii-payload.php';
+    include_once WC_CASHEW_DIR . 'includes/request/wc-checkout.php';
     include_once WC_CASHEW_DIR . 'includes/request/wc-spotii-process-payment.php';
     include_once WC_CASHEW_DIR . 'includes/request/wc-spotii-response-handler.php';
     include_once WC_CASHEW_DIR . 'includes/request/wc-spotii-refund.php';
