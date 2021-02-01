@@ -7,20 +7,19 @@ function processRefund($order_id, $amount = null, $reason = '', $th)
 {
 
     $order = wc_get_order($order_id);
-    print_r($order->get_meta('reference'));
-    $url = $th->api . 'refunds/' . $order_id . '/refund';
+    $url = $th->api . 'refunds/woocommerce';
 
     $auth = spotiiAuth($th, $order->get_payment_method(), $order->get_currency());
     $headers = getHeader($th);
     $body = array(
-        "total"     => $amount,
-        "currency"  => $order->get_currency(),
+        "orderId" => $order->get_meta('reference'),
+        "refundAmount" => $amount,
+        "currencyCode" => $order->get_currency(),
     );
     $payload = array(
         'method' => 'POST',
         'headers' => $headers,
         'body' => wp_json_encode($body),
-
     );
 
     $response = wp_remote_post($url, $payload);

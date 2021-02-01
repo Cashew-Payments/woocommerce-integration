@@ -5,7 +5,7 @@
 function add_product_widget()
 {
     global $product;
-    $th = new WC_Spotii_Gateway_Shop_Now_Pay_Later;
+    $th = new WC_Cashew_Gateway;
     $instal = $product->get_price();
     $curr = get_woocommerce_currency_symbol();
     $currency = get_woocommerce_currency();

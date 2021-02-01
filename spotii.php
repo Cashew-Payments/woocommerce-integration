@@ -31,7 +31,7 @@ add_filter('woocommerce_payment_gateways', 'spotii_add_gateway_class');
 function spotii_add_gateway_class($gateways)
 {
 
-    $gateways[] = 'WC_Spotii_Gateway_Shop_Now_Pay_Later';
+    $gateways[] = 'WC_Cashew_Gateway';
     return $gateways;
 }
 /*
@@ -43,7 +43,7 @@ add_action('plugins_loaded', 'spotii_init_gateway_class');
 function spotii_init_gateway_class()
 {
 
-    if (class_exists('WC_Spotii_Gateway_Shop_Now_Pay_Later') || !class_exists('WC_Payment_Gateway')) {
+    if (class_exists('WC_Cashew_Gateway') || !class_exists('WC_Payment_Gateway')) {
         return;
     }
 
@@ -60,9 +60,9 @@ function spotii_init_gateway_class()
     include_once WC_SPOTII_DIR_PATH . 'includes/request/wc-spotii-response-handler.php';
     include_once WC_SPOTII_DIR_PATH . 'includes/request/wc-spotii-refund.php';
     /*
-    * Load Spotii Gateway
+    * Load cashew Gateway
     */
-    include_once WC_SPOTII_DIR_PATH . '/includes/gateways/class-wc-shop-now-pay-later.php';
+    include_once WC_SPOTII_DIR_PATH . '/includes/gateways/class-wc-cashew.php';
     /*
     * Load Spotii function 
     */
