@@ -20,7 +20,7 @@ function get_checkout_payload($order, $th, $type, $addon)
         "totalAmount" => round($total, 4),
         "currencyCode" => $currency,
         "taxAmount" => $order->get_total_tax(),
-        "language" => get_locale(),
+        "language" => explode('_', get_locale())[0],
         "merchant" => array(
             "confirmationUrl" => $notify_url . "&o=" . $order->get_id() . "&s=s",
             "cancelUrl" => $notify_url . "&o=" . $order->get_id() . "&s=f",
