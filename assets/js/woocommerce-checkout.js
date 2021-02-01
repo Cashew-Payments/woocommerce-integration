@@ -566,7 +566,6 @@ jQuery(function ($) {
       }
 
       // Trigger a handler to let gateways manipulate the checkout if needed
-      // eslint-disable-next-line max-len
       if (
         $form.triggerHandler("checkout_place_order") !== false &&
         $form.triggerHandler(
@@ -629,7 +628,7 @@ jQuery(function ($) {
                 $("#closeiframebtn").on("click", function () {
                   closeIFrame();
                 });
-                openIframeSpotiiCheckout({
+                openCashewCheckout({
                   token: result.token,
                   orderId: result.orderId,
                   storeToken: result.storeToken,
