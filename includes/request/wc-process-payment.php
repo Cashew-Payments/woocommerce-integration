@@ -28,6 +28,11 @@ function processPayment($order_id, $th, $type = null, $addon)
         error_log("Exception [WP_Error Process Payment] " . $errorCurr . $currency);
         throw new Exception(__($errorCurr));
     }
+    cashewApiAuth($th, $addon,  $currency);
+    if ($order->get_meta('reference')) {
+        return array('result' => 'success', 'redirect' => "", 'token' => $order->get_meta('token'), 'storeToken' => $th->token, "checkout_url" => '', "orderId" => $order->get_meta('reference'), "api" => $th->api, "cancelURL" => $order->get_cancel_order_url(), "sucessURL" => $order->get_checkout_order_received_url());
+    }
+
     try {
         $url = $th->api . 'checkouts/';
 
