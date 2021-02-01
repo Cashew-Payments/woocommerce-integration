@@ -4,6 +4,7 @@
 */
 function add_product_widget($th)
 {
+    echo 'HER';
     print_r($th);
     global $product;
     $price = $product->get_price();
