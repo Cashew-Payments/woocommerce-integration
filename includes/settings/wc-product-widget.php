@@ -5,7 +5,7 @@
 function add_product_widget($th)
 {
     global $product;
-    echo get_option('sandbox', '' );
+    print_r(get_option('woocommerce_api_wc_cashew_gateway'));
     $price = $product->get_price();
     $language = explode('_', get_locale())[0];
     $currency = get_woocommerce_currency_symbol();
