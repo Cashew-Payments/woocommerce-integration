@@ -9,7 +9,7 @@ function processRefund($order_id, $amount = null, $reason = '', $th)
     $order = wc_get_order($order_id);
     $url = $th->api . 'refunds/woocommerce';
 
-    $auth = spotiiAuth($th, $order->get_payment_method(), $order->get_currency());
+    $auth = cashewApiAuth($th, $order->get_payment_method(), $order->get_currency());
     $headers = getHeader($th);
     $body = array(
         "orderId" => $order->get_meta('reference'),
@@ -27,11 +27,11 @@ function processRefund($order_id, $amount = null, $reason = '', $th)
     $res = json_decode($response_body, true);
 
     if (is_wp_error($response)) {
-        error_log('WP_ERROR [Spotii Process Refund] ');
+        error_log('WP_ERROR [cashew Process Refund] ');
         throw new Exception(__('Network connection issue'));
     }
     if (empty($response['body'])) {
-        error_log('Response Body Empty [Spotii Process Refund] ');
+        error_log('Response Body Empty [cashew Process Refund] ');
         throw new Exception(__('Empty response body'));
     }
 
@@ -41,7 +41,7 @@ function processRefund($order_id, $amount = null, $reason = '', $th)
         return true;
     } else {
         $order->add_order_note('Refund failed' . $response_body);
-        wc_add_notice(__('Refund Error: ', 'woothemes') . "Refund with Spotii failed", 'error');
+        wc_add_notice(__('Refund Error: ', 'woothemes') . "Refund with cashew failed", 'error');
 
         error_log("Error on refund: " . $response_body);
         return false;

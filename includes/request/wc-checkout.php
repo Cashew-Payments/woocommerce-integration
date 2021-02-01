@@ -8,7 +8,7 @@ function get_checkout_payload($order, $th, $type, $addon)
     $order_id = $order->get_meta('_alg_wc_custom_order_number') !== "" ? $order->get_meta('_alg_wc_custom_order_number') : $order->get_id();
     $currency = $order->get_currency();
     $total = $order->get_total();
-    spotiiAuth($th, $addon,  $currency);
+    cashewApiAuth($th, $addon,  $currency);
     if ($currency == "USD") {
         $total = $total * 3.6730;
         $currency = "AED";

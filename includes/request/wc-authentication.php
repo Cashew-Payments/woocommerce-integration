@@ -1,8 +1,8 @@
 <?php
 /*
-/* Spotii Authentications
+/* API Authentication
 */
-function spotiiAuth($th, $addon = "", $currency = null)
+function cashewApiAuth($th, $addon = "", $currency = null)
 {
 
     $auth_url =  $th->auth . 'identity/store/authorize';
@@ -10,7 +10,7 @@ function spotiiAuth($th, $addon = "", $currency = null)
         $storeUrl =  $th->storeUrl;
         $cashewPrivateKey = $th->cashewPrivateKey;
         if (empty($storeUrl) || empty($cashewPrivateKey)) {
-            error_log("Keys does not exist [WP_Error_Spotii Authentication]: ");
+            error_log("Keys does not exist [WP_Error Authentication]: ");
             throw new Exception(__('Keys does not exist'));
         }
 
@@ -30,11 +30,11 @@ function spotiiAuth($th, $addon = "", $currency = null)
         $response = wp_remote_post($auth_url, $payload);
         
         if (is_wp_error($response)) {
-            error_log("Exception [WP_Error_Spotii Authentication]: " . $response);
+            error_log("Exception [WP_Error Authentication]: " . $response);
             throw new Exception(__('Network connection issue'));
         }
         if (empty($response['body'])) {
-            error_log("Response Body Empty [WP_Error_Spotii Authentication]: " . $response);
+            error_log("Response Body Empty [WP_Error Authentication]: " . $response);
             throw new Exception(__('Empty response body'));
         }
 
@@ -48,7 +48,7 @@ function spotiiAuth($th, $addon = "", $currency = null)
             error_log("Error on authentication: " . $response_body);
         }
     } else {
-        error_log("Response Body Empty [WP_Error_Spotii Authentication]: ");
+        error_log("Response Body Empty [WP_Error Authentication]: ");
         throw new Exception(__('Plugin disabled'));
     }
 }

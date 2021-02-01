@@ -12,12 +12,11 @@ function processPayment($order_id, $th, $type = null, $addon)
     
     $min = (int)$th->order_min;
     $max = (int)$th->order_max;
-    // Spotii minimum limit 
     $totalConverted = (int)$total;
-    echo 'TEST: '.$totalConverted < $min || $totalConverted > $max;
+    
     if ($totalConverted < $min || $totalConverted > $max) {
-        $errorMin = $lang == 'ar' ? "المبلغ الاجمالي في سلتك أقل من الحد الادنى لاستخدام سبوتي: سبوتي متاح للطلبات بقيمة اعلى من" . $min . " درهم اماراتي أو " . $min . " ريال سعودي. بقليل من التسوق يمكن تقسيم دفعاتك على أربع أقساط خالية من التكاليف الاضافية. " : "We only support at the moment value up to ".$currency . " " . $max . ".";
-        error_log("Exception [WP_Error_Spotii] " . $errorMin);
+        $errorMin = "We only support at the moment value up to ".$currency . " " . $max . ".";
+        error_log("Exception [WP_Error] " . $errorMin);
         throw new Exception(__($errorMin));
     }
 
@@ -26,7 +25,7 @@ function processPayment($order_id, $th, $type = null, $addon)
     
     if (!validate_curr($currency)) {
         $errorCurr = $lang == 'ar' ? "سبوتي لا يدعم هذه العملة" : "Currency is not supported";
-        error_log("Exception [WP_Error_Spotii Process Payment] " . $errorCurr . $currency);
+        error_log("Exception [WP_Error Process Payment] " . $errorCurr . $currency);
         throw new Exception(__($errorCurr));
     }
     try {
@@ -38,7 +37,7 @@ function processPayment($order_id, $th, $type = null, $addon)
 
 
         if (is_wp_error($response)) {
-            error_log("Exception [WP_Error_Spotii Process Payment]: " . $response);
+            error_log("Exception [WP_Error Process Payment]: " . $response);
             throw new Exception(__('Network connection issue'));
         }
         if (empty($response['body'])) {
@@ -55,12 +54,10 @@ function processPayment($order_id, $th, $type = null, $addon)
             $order->save();
             return array('result' => 'success', 'redirect' => "", 'token' => $response_body_arr['data']['token'], 'storeToken' => $th->token, "checkout_url" => $redirect_url, "orderId" => $response_body_arr['data']['orderId'], "api" => $th->api, "cancelURL" => $order->get_cancel_order_url(), "sucessURL" => $order->get_checkout_order_received_url());
         } else {
-
-            $errorMin = $lang == 'ar' ? "المبلغ الاجمالي في سلتك أقل من الحد الادنى لاستخدام سبوتي: سبوتي متاح للطلبات بقيمة اعلى من 200 درهم اماراتي أو 200 ريال سعودي. بقليل من التسوق يمكن تقسيم دفعاتك على أربع أقساط  خالية من التكاليف الاضافية. " : "You don't quite have enough in your basket: Spotii is available for purchases over AED 200. With a little more shopping, you can split your payment over 4 cost-free instalments.";
             error_log("Error on process payment: " . $response_body);
             $res = json_decode($response_body, true);
         }
     } catch (Exception $e) {
-        error_log("Error on process_payment[Spotii]: " . $e->getMessage());
+        error_log("Error on process_payment: " . $e->getMessage());
     }
 }
