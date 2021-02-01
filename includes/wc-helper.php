@@ -14,14 +14,13 @@ add_action('woocommerce_single_product_summary', 'add_product_widget');
 $lang = get_locale();
 /**
  * Register the script and inject parameters.
- *
- * @param string     $handle Script handle the data will be attached to.
- * @param array|null $params Parameters injected.
  */
 function wc_cashew_scripts()
 {
+    $isSandbox = get_option('woocommerce_cashew_payments_settings')['sandbox'] == 'yes';
+    $domain = $isSandbox ? 's3-eu-west-1.amazonaws.com/cdn-sandbox' : 'cdn';
     if (is_checkout()) {
-        wp_enqueue_script('cashew-checkout', 'https://s3-eu-west-1.amazonaws.com/cdn-dev.cashewpayments.com/widgets/woocommerce.checkout.min.js', array('jquery'), '0.01', true);
+        wp_enqueue_script('cashew-checkout', 'https://'.$domain.'.cashewpayments.com/widgets/woocommerce.checkout.min.js', array('jquery'), '0.01', true);
     }
     wp_enqueue_script('cashew-helper-checkout', plugin_dir_url(__FILE__) . '../assets/js/cashew-checkout.js', array('jquery'), '0.01', true);
     if (is_checkout()) {
