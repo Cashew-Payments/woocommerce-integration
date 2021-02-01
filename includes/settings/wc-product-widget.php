@@ -5,7 +5,7 @@
 function add_product_widget($th)
 {
     global $product;
-    echo get_option('sandbox', array() );
+    echo get_option('sandbox', '' );
     $price = $product->get_price();
     $language = explode('_', get_locale())[0];
     $currency = get_woocommerce_currency_symbol();
