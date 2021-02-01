@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Spotii functions
+ * Helper functions
  */
 
 defined('ABSPATH') || exit;

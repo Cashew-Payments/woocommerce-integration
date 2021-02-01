@@ -34,7 +34,7 @@ function processPayment($order_id, $th, $type = null, $addon)
 
         $payload = get_checkout_payload($order, $th, $type, $addon);
         $response = wp_remote_post($url, $payload);
-        add_action('woocommerce_api_' . $addon, array($th, 'spotii_response_handler'));
+        add_action('woocommerce_api_' . $addon, array($th, 'cashew_response_handler'));
 
 
         if (is_wp_error($response)) {

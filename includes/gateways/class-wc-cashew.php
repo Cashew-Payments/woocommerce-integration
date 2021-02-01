@@ -1,6 +1,6 @@
 <?php
 /*
-/* Shop Now Pay Later
+/* cashew Payments
 */
 class WC_Cashew_Gateway extends WC_Payment_Gateway
 {
@@ -8,7 +8,7 @@ class WC_Cashew_Gateway extends WC_Payment_Gateway
     public function __construct()
     {
 
-        add_action('woocommerce_api_wc_cashew_gateway', array($this, 'spotii_response_handler'));
+        add_action('woocommerce_api_wc_cashew_gateway', array($this, 'cashew_response_handler'));
         gatewayParameters($this);
     }
     /**
@@ -19,7 +19,7 @@ class WC_Cashew_Gateway extends WC_Payment_Gateway
         form_fields($this);
     }
     /**
-     * Get icon for Spotii option on checkout page
+     * Get icon for checkout page
      */
     public function get_icon()
     {
@@ -27,7 +27,7 @@ class WC_Cashew_Gateway extends WC_Payment_Gateway
         return apply_filters('woocommerce_gateway_icon', $icon, $this->id);
     }
     /*
-    * Get description text for Spotii option on checkout page
+    * Get description text for checkout page
     */
     public function payment_fields()
     {
@@ -47,11 +47,11 @@ class WC_Cashew_Gateway extends WC_Payment_Gateway
         return processPayment($order_id, $this, "cashew Payments", "wc_cashew_gateway");
     }
     /**
-     * Called when Spotii checkout page redirects back to merchant page
+     * Called when checkout page redirects back to merchant page
      */
-    public function spotii_response_handler()
+    public function cashew_response_handler()
     {
-        return spotiiResponseHandler($this);
+        return cashewResponseHandler($this);
     }
     /**
      * Process refunds

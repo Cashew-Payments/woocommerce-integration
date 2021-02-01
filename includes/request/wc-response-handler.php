@@ -3,7 +3,7 @@
 /**
  * Called when Spotii checkout page redirects back to merchant page
  */
-function spotiiResponseHandler($th)
+function cashewResponseHandler($th)
 {
     $lang = get_locale();
     $errorChe = $lang == 'ar' ? 'خطأ في تأكيد الطلب: ' : 'Checkout Error: ';
