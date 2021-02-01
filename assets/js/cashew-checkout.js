@@ -1,5 +1,11 @@
 const root = document.getElementsByTagName("body")[0];
 
+function isMobileSafari() {
+  const ua = (window && window.navigator && window.navigator.userAgent) || "";
+  const iOS = !!ua.match(/iPad/i) || !!ua.match(/iPhone/i);
+  const webkit = !!ua.match(/WebKit/i);
+  return iOS && webkit && !ua.match(/CriOS/i);
+}
 const thirdPartySupported = (root) => {
   return new Promise((resolve, reject) => {
     const receiveMessage = function (evt) {
@@ -10,6 +16,10 @@ const thirdPartySupported = (root) => {
       }
     };
     window.addEventListener("message", receiveMessage, false);
+    const frame = document.createElement("iframe");
+    frame.src = "https://mindmup.github.io/3rdpartycookiecheck/start.html";
+    frame.style.display = "none";
+    root.appendChild(frame);
   });
 };
 var container,
@@ -20,6 +30,12 @@ var container,
   content,
   first = !0;
 
+function setUrls() {
+  var o = document.getElementById("spotii-popup__button"),
+    e = document.getElementById("spotii-popup__terms");
+  (o.href = "https://spotii.me/how-it-works.html"),
+    (e.href = "https://spotii.me/terms-and-conditions.html");
+}
 !(function (o) {
   "function" == typeof define && define.amd
     ? define(["jquery"], o)
@@ -127,6 +143,7 @@ function render() {
     ((styles = document.createElement("style")).innerHTML = POPUP_CSS),
     document.body.appendChild(styles),
     document.body.appendChild(container),
+    setUrls(),
     show();
 }
 
@@ -248,8 +265,11 @@ jQuery(document).ready(function (o) {
       );
     return n.appendChild(i), n;
   }
-  (showCashew = function () {}),
+  (showOverlay = function () {}),
     (openIframeSpotiiCheckout = function (resp) {
+      if (isMobileSafari()) {
+        // window.location.href = resp
+      } else {
         thirdPartySupported(root)
           .then(() => {
             cashew.checkout.response = {
@@ -271,6 +291,7 @@ jQuery(document).ready(function (o) {
             };
             cashew.checkout.load();
           });
+      }
     }),
     
     (submit_error = function (e) {
