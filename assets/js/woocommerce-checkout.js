@@ -556,7 +556,7 @@ jQuery(function ($) {
       if (
         $("input[name='payment_method']:checked").val() == "cashew_payments"
       ) {
-        showOverlay();
+        showCashew();
       }
       wc_checkout_form.reset_update_checkout_timer();
       var $form = $(this);
