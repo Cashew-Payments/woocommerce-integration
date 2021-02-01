@@ -4,8 +4,8 @@
 */
 function add_product_widget($th)
 {
-    global $product, $woocommerce_cashew_payments_settings;
-    print_r($GLOBALS);
+    global $product;
+    echo get_option('sandbox', array() );
     $price = $product->get_price();
     $language = explode('_', get_locale())[0];
     $currency = get_woocommerce_currency_symbol();
