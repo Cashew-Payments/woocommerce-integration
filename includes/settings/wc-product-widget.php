@@ -5,7 +5,7 @@
 function add_product_widget($th)
 {
     global $product;
-    echo get_site_url();
+
     $isSandbox = get_option('woocommerce_cashew_payments_settings')['sandbox'] == 'yes';
     $domain = $isSandbox ? 's3-eu-west-1.amazonaws.com/cdn-sandbox' : 'cdn';
     $price = $product->get_price();

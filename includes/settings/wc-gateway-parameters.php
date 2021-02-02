@@ -25,11 +25,10 @@ function gatewayParameters($th)
     $th->sandbox = $th->get_option('sandbox', 'yes') === 'yes';
     $th->order_min = $th->get_option('order_minimum', '');
     $th->order_max = $th->get_option('order_maximum', '');
-    $th->storeUrl = $th->get_option('store_url', '');
     $th->cashewPrivateKey = $th->get_option('cashew_private_key', '');
 
-    $th->auth = $th->sandbox ? "https://api-dev.cashewpayments.com/v1/" : "https://api.cashewpayments.com/v1/";
-    $th->api = $th->sandbox ? "https://api-dev.cashewpayments.com/v1/" : "https://api.cashewpayments.com/v1/";
+    $th->auth = $th->sandbox ? "https://api-sandbox.cashewpayments.com/v1/" : "https://api.cashewpayments.com/v1/";
+    $th->api = $th->sandbox ? "https://api-sandbox.cashewpayments.com/v1/" : "https://api.cashewpayments.com/v1/";
 
     add_action('woocommerce_update_options_payment_gateways_' . $th->id, array($th, 'process_admin_options'));
 }

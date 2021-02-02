@@ -34,10 +34,6 @@ function form_fields($th)
             'default' => 'yes',
             'desc_tip' => false,
         ),
-        'store_url' => array(
-            'title' => 'Store url',
-            'type' => 'text',
-        ),
         'cashew_private_key' => array(
             'title' => 'Cashew private key',
             'type' => 'password',
