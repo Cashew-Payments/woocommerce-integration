@@ -9,6 +9,7 @@ function cashewApiAuth($th, $addon = "", $currency = null)
     if ($th->enabled == "yes") {
         $storeUrl =  get_site_url();
         $cashewPrivateKey = $th->cashewPrivateKey;
+        echo $storeUrl.' '.$cashewPrivateKey;
         if (empty($cashewPrivateKey)) {
             error_log("Keys does not exist [WP_Error Authentication]: ");
             throw new Exception(__('Keys does not exist'));
