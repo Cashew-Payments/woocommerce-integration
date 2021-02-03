@@ -28,6 +28,7 @@ function processPayment($order_id, $th, $type = null, $addon)
     cashewApiAuth($th, $addon,  $currency);
     if ($order->get_meta('reference')) {
         return array(
+            'redirect' => '',
             'result' => 'success', 
             'token' => $order->get_meta('token'), 
             'storeToken' => $th->token, 
@@ -56,11 +57,11 @@ function processPayment($order_id, $th, $type = null, $addon)
         $response_body_arr = json_decode($response_body, true);
 
         if (array_key_exists('token', $response_body_arr['data'])) {
-            $redirect_url = $response_body_arr['data']['url'];
             $order->update_meta_data('reference', $response_body_arr['data']['orderId']);
             $order->update_meta_data('token', $response_body_arr['data']['token']);
             $order->save();
             return array(
+                'redirect' => '',
                 'result' => 'success', 
                 'token' => $response_body_arr['data']['token'], 
                 'storeToken' => $th->token, 
