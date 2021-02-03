@@ -12,7 +12,7 @@
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl-3.0.html
  *
- * @package cashew
+ * @package Cashew
  */
 /*
  * Register our PHP class as a WooCommerce payment gateway
@@ -22,19 +22,19 @@ defined('ABSPATH') || exit;
 require __DIR__ . '/includes/settings/wc-cart-widget.php';
 require __DIR__ . '/includes/settings/wc-product-widget.php';
 
-add_filter('woocommerce_payment_gateways', 'cashew_add_gateway_class');
+add_filter('woocommerce_payment_gateways', 'Cashew_add_gateway_class');
 
-function cashew_add_gateway_class($gateways)
+function Cashew_add_gateway_class($gateways)
 {
 
     $gateways[] = 'WC_Cashew_Gateway';
     return $gateways;
 }
 
-add_action('plugins_loaded', 'cashew_init_gateway_class');
+add_action('plugins_loaded', 'Cashew_init_gateway_class');
 
 
-function cashew_init_gateway_class()
+function Cashew_init_gateway_class()
 {
 
     if (class_exists('WC_Cashew_Gateway') || !class_exists('WC_Payment_Gateway')) {
