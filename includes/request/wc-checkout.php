@@ -1,8 +1,5 @@
 <?php
 
-/**
- * Helper to prepare checkout payload
- */
 function get_checkout_payload($order, $th, $type, $addon)
 {
     $order_id = $order->get_meta('_alg_wc_custom_order_number') !== "" ? $order->get_meta('_alg_wc_custom_order_number') : $order->get_id();
@@ -45,7 +42,6 @@ function get_checkout_payload($order, $th, $type, $addon)
             "phone" => $order->get_billing_phone(),
         ),
 
-        // Order
         "shipping" => array(
             "shipping_amount" => $order->get_shipping_total(),
             "address" => array(
@@ -85,9 +81,6 @@ function get_checkout_payload($order, $th, $type, $addon)
 
     return $payload;
 }
-/**
- * Helper to prepare authentication header
- */
 function getHeader($th)
 {
     $headers = array(

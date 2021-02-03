@@ -1,17 +1,8 @@
 <?php
-/*
-/* Currency Converter
-*/
 
-/*
-/* validate Currency
-*/
 function validate_curr($curr)
 {
+    $allowedCurrencies = ['AED', 'SAR'];
 
-    if ($curr == "AED" || $curr == "SAR") {
-        return true;
-    } else {
-        return false;
-    }
+    return in_array($curr, $allowedCurrencies);
 }

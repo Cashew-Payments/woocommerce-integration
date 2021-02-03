@@ -1,7 +1,6 @@
 <?php
-/*
-/* Plugin Parameters 
-*/
+
+
 function gatewayParameters($th)
 {
 
@@ -10,7 +9,6 @@ function gatewayParameters($th)
     $th->method_title = 'cashew Payments';
     $th->method_description =  'Enable payment in installments with zero interest';
 
-    // Options supported by cashew payment gateway
     $th->supports = array(
         'products',
         'refunds'

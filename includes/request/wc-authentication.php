@@ -9,9 +9,8 @@ function cashewApiAuth($th, $addon = "", $currency = null)
     if ($th->enabled == "yes") {
         $storeUrl =  get_site_url();
         $cashewPrivateKey = $th->cashewPrivateKey;
-        echo $storeUrl.' '.$cashewPrivateKey;
+        
         if (empty($cashewPrivateKey)) {
-            error_log("Keys does not exist [WP_Error Authentication]: ");
             throw new Exception(__('Keys does not exist'));
         }
 
@@ -31,11 +30,9 @@ function cashewApiAuth($th, $addon = "", $currency = null)
         $response = wp_remote_post($auth_url, $payload);
         
         if (is_wp_error($response)) {
-            error_log("Exception [WP_Error Authentication]: " . $response);
             throw new Exception(__('Network connection issue'));
         }
         if (empty($response['body'])) {
-            error_log("Response Body Empty [WP_Error Authentication]: " . $response);
             throw new Exception(__('Empty response body'));
         }
 
@@ -46,10 +43,9 @@ function cashewApiAuth($th, $addon = "", $currency = null)
             $th->token = $response_body_arr['data']['token'];
             return $response_body_arr['data']['token'];
         } else {
-            error_log("Error on authentication: " . $response_body);
+            throw new Exception(__('Error on authentication'));
         }
     } else {
-        error_log("Response Body Empty [WP_Error Authentication]: ");
         throw new Exception(__('Plugin disabled'));
     }
 }

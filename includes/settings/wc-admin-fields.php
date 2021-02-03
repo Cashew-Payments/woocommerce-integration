@@ -1,7 +1,4 @@
 <?php
-/*
-/* Form Fields 
-*/
 function form_fields($th)
 {
 
@@ -45,13 +42,13 @@ function form_fields($th)
             'title' => 'Order minimum',
             'type' => 'text',
             'default' => '0',
-            'description' => 'The order minimum is set in AED'
+            'description' => 'The order minimum amount for the cart'
         ),
         'order_maximum' => array(
             'title' => 'Order maximum',
             'type' => 'text',
             'default' => '4000',
-            'description' => 'The order maximum is set in AED'
+            'description' => 'The order maximum amount for the cart'
         )
     );
     $th->form_fields += $widget;

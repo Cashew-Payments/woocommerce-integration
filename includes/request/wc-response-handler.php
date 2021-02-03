@@ -16,7 +16,7 @@ function cashewResponseHandler($th)
         wp_redirect($redirect_url);
         exit;
     }
-    $errorPaymentFailed = $lang == 'ar' ? "لقد حصل خطأ عند الدفع عن طريق سبوتي، رجاءً حاول مرة اخرى" : "Payment with cashew failed. Please try again";
+    $errorPaymentFailed = $lang == 'ar' ? "فشل الدفع مع الكاجو. حاول مرة اخرى" : "Payment with cashew failed. Please try again";
     $status = $_GET['s'];
     // Check for url param success
     if ($status == 's') {
@@ -71,11 +71,9 @@ function cashewResponseHandler($th)
             error_log("Error on handler[cashew_response_handler]: " . $e->getMessage());
         }
     } else {
-        // url param failed
         error_log('url param failed [cashew_response_handler]');
     }
 
-    // If you are here, payment was unsuccessful
     $order->add_order_note('Payment with cashew failed');
     wc_add_notice(__($errorChe, 'woothemes') . $errorPaymentFailed, 'error');
     $order->update_status('cancelled', __('Payment with cashew failed', 'woocommerce'));

@@ -1,6 +1,4 @@
-/* global wc_checkout_params */
 jQuery(function ($) {
-  // wc_checkout_params is required to continue, ensure the object exists
   if (typeof wc_checkout_params === "undefined") {
     return false;
   }
@@ -18,7 +16,6 @@ jQuery(function ($) {
       $(document.body).bind("update_checkout", this.update_checkout);
       $(document.body).bind("init_checkout", this.init_checkout);
 
-      // Payment methods
       this.$checkout_form.on(
         "click",
         'input[name="payment_method"]',
@@ -35,28 +32,23 @@ jQuery(function ($) {
         this.$order_review.attr("novalidate", "novalidate");
       }
 
-      // Prevent HTML5 validation which can conflict.
       this.$checkout_form.attr("novalidate", "novalidate");
 
-      // Form submission
       this.$checkout_form.on("submit", this.submit);
 
-      // Inline validation
       this.$checkout_form.on(
         "input validate change",
         ".input-text, select, input:checkbox",
         this.validate_field
       );
 
-      // Manual trigger
       this.$checkout_form.on("update", this.trigger_update_checkout);
 
-      // Inputs/selects which update totals
       this.$checkout_form.on(
         "change",
         'select.shipping_method, input[name^="shipping_method"], #ship-to-different-address input, .update_totals_on_change select, .update_totals_on_change input[type="radio"], .update_totals_on_change input[type="checkbox"]',
         this.trigger_update_checkout
-      ); // eslint-disable-line max-len
+      );
       this.$checkout_form.on(
         "change",
         ".address-field select",
@@ -66,25 +58,22 @@ jQuery(function ($) {
         "change",
         ".address-field input.input-text, .update_totals_on_change input.input-text",
         this.maybe_input_changed
-      ); // eslint-disable-line max-len
+      );
       this.$checkout_form.on(
         "keydown",
         ".address-field input.input-text, .update_totals_on_change input.input-text",
         this.queue_update_checkout
-      ); // eslint-disable-line max-len
+      );
 
-      // Address fields
       this.$checkout_form.on(
         "change",
         "#ship-to-different-address input",
         this.ship_to_different_address
       );
 
-      // Trigger events
       this.$checkout_form.find("#ship-to-different-address input").change();
       this.init_payment_methods();
 
-      // Update on page load
       if (wc_checkout_params.is_checkout === "1") {
         $(document.body).trigger("init_checkout");
       }
@@ -97,35 +86,29 @@ jQuery(function ($) {
         'input[name="payment_method"]'
       );
 
-      // If there is one method, we can hide the radio input
-      if (1 === $payment_methods.length) {
+      if ($payment_methods.length === 1) {
         $payment_methods.eq(0).hide();
       }
 
-      // If there was a previously selected method, check that one.
       if (wc_checkout_form.selectedPaymentMethod) {
         $("#" + wc_checkout_form.selectedPaymentMethod).prop("checked", true);
       }
 
-      // If there are none selected, select the first.
-      if (0 === $payment_methods.filter(":checked").length) {
+      if (!$payment_methods.filter(":checked").length) {
         $payment_methods.eq(0).prop("checked", true);
       }
 
-      // Get name of new selected method.
       var checkedPaymentMethod = $payment_methods
         .filter(":checked")
         .eq(0)
         .prop("id");
 
       if ($payment_methods.length > 1) {
-        // Hide open descriptions.
         $('div.payment_box:not(".' + checkedPaymentMethod + '")')
           .filter(":visible")
           .slideUp(0);
       }
 
-      // Trigger click event for selected method
       $payment_methods.filter(":checked").eq(0).trigger("click");
     },
     get_payment_method: function () {
@@ -171,7 +154,6 @@ jQuery(function ($) {
       $("div.create-account").hide();
 
       if ($(this).is(":checked")) {
-        // Ensure password is not pre-populated.
         $("#account_password").val("").change();
         $("div.create-account").slideDown();
       }
@@ -256,7 +238,7 @@ jQuery(function ($) {
       if ("input" === event_type) {
         $parent.removeClass(
           "woocommerce-invalid woocommerce-invalid-required-field woocommerce-invalid-email woocommerce-validated"
-        ); // eslint-disable-line max-len
+        );
       }
 
       if ("validate" === event_type || "change" === event_type) {
@@ -283,7 +265,7 @@ jQuery(function ($) {
             /* https://stackoverflow.com/questions/2855865/jquery-validate-e-mail-address-regex */
             var pattern = new RegExp(
               /^([a-z\d!#$%&'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+(\.[a-z\d!#$%&'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+)*|"((([ \t]*\r\n)?[ \t]+)?([\x01-\x08\x0b\x0c\x0e-\x1f\x7f\x21\x23-\x5b\x5d-\x7e\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|\\[\x01-\x09\x0b\x0c\x0d-\x7f\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))*(([ \t]*\r\n)?[ \t]+)?")@(([a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.)+([a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[0-9a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.?$/i
-            ); // eslint-disable-line max-len
+            );
 
             if (!pattern.test($this.val())) {
               $parent
@@ -299,12 +281,11 @@ jQuery(function ($) {
             .removeClass(
               "woocommerce-invalid woocommerce-invalid-required-field woocommerce-invalid-email"
             )
-            .addClass("woocommerce-validated"); // eslint-disable-line max-len
+            .addClass("woocommerce-validated");
         }
       }
     },
     update_checkout: function (event, args) {
-      // Small timeout to prevent multiple requests when several fields update at the same time
       wc_checkout_form.reset_update_checkout_timer();
       wc_checkout_form.updateTimer = setTimeout(
         wc_checkout_form.update_checkout_action,
@@ -321,12 +302,7 @@ jQuery(function ($) {
         return;
       }
 
-      args =
-        typeof args !== "undefined"
-          ? args
-          : {
-              update_shipping_method: true,
-            };
+      args = args || { update_shipping_method: true };
 
       var country = $("#billing_country").val(),
         state = $("#billing_state").val(),
@@ -384,7 +360,6 @@ jQuery(function ($) {
       if (false !== args.update_shipping_method) {
         var shipping_methods = {};
 
-        // eslint-disable-next-line max-len
         $(
           'select.shipping_method, input[name^="shipping_method"][type="radio"]:checked, input[name^="shipping_method"][type="hidden"]'
         ).each(function () {
@@ -411,18 +386,15 @@ jQuery(function ($) {
           .replace("%%endpoint%%", "update_order_review"),
         data: data,
         success: function (data) {
-          // Reload the page if requested
-          if (data && true === data.reload) {
+          if (data && data.reload === true) {
             window.location.reload();
             return;
           }
 
-          // Remove any notices added previously
           $(".woocommerce-NoticeGroup-updateOrderReview").remove();
 
           var termsCheckBoxChecked = $("#terms").prop("checked");
 
-          // Save payment details to a temporary object
           var paymentDetails = {};
           $(".payment_box :input").each(function () {
             var ID = $(this).attr("id");
@@ -438,7 +410,6 @@ jQuery(function ($) {
             }
           });
 
-          // Always update the fragments
           if (data && data.fragments) {
             $.each(data.fragments, function (key, value) {
               if (
@@ -452,12 +423,10 @@ jQuery(function ($) {
             wc_checkout_form.fragments = data.fragments;
           }
 
-          // Recheck the terms and conditions box, if needed
           if (termsCheckBoxChecked) {
             $("#terms").prop("checked", true);
           }
 
-          // Fill in the payment details if possible without overwriting data if set.
           if (!$.isEmptyObject(paymentDetails)) {
             $(".payment_box :input").each(function () {
               var ID = $(this).attr("id");
@@ -478,25 +447,20 @@ jQuery(function ($) {
             });
           }
 
-          // Check for error
           if (data && "failure" === data.result) {
             var $form = $("form.checkout");
 
-            // Remove notices from all sources
             $(".woocommerce-error, .woocommerce-message").remove();
 
-            // Add new errors returned by this event
             if (data.messages) {
               $form.prepend(
                 '<div class="woocommerce-NoticeGroup woocommerce-NoticeGroup-updateOrderReview">' +
                   data.messages +
                   "</div>"
-              ); // eslint-disable-line max-len
+              );
             } else {
               $form.prepend(data);
             }
-
-            // Lose focus for all fields
             $form
               .find(".input-text, select, input:checkbox")
               .trigger("validate")
@@ -504,26 +468,16 @@ jQuery(function ($) {
 
             wc_checkout_form.scroll_to_notices();
           }
-
-          // Re-init methods
           wc_checkout_form.init_payment_methods();
-
-          // Fire updated_checkout event.
           $(document.body).trigger("updated_checkout", [data]);
         },
       });
     },
     handleUnloadEvent: function (e) {
-      // Modern browsers have their own standard generic messages that they will display.
-      // Confirm, alert, prompt or custom message are not allowed during the unload event
-      // Browsers will display their own standard messages
-
-      // Check if the browser is Internet Explorer
       if (
         navigator.userAgent.indexOf("MSIE") !== -1 ||
         !!document.documentMode
       ) {
-        // IE handles unload events differently than modern browsers
         e.preventDefault();
         return undefined;
       }
@@ -565,7 +519,6 @@ jQuery(function ($) {
         return false;
       }
 
-      // Trigger a handler to let gateways manipulate the checkout if needed
       if (
         $form.triggerHandler("checkout_place_order") !== false &&
         $form.triggerHandler(
@@ -576,13 +529,10 @@ jQuery(function ($) {
 
         wc_checkout_form.blockOnSubmit($form);
 
-        // Attach event to block reloading the page when the form has been submitted
         wc_checkout_form.attachUnloadEventsOnSubmit();
 
-        // ajaxSetup is global, but we use it to ensure JSON is valid once returned.
         $.ajaxSetup({
           dataFilter: function (raw_response, dataType) {
-            // We only want to work with JSON
             if ("json" !== dataType) {
               return raw_response;
             }
@@ -590,7 +540,6 @@ jQuery(function ($) {
             if (wc_checkout_form.is_valid_json(raw_response)) {
               return raw_response;
             } else {
-              // Attempt to fix the malformed JSON
               var maybe_valid_json = raw_response.match(/{"result.*}/);
 
               if (null === maybe_valid_json) {
@@ -614,17 +563,13 @@ jQuery(function ($) {
           data: $form.serialize(),
           dataType: "json",
           success: function (result) {
-            // Detach the unload handler that prevents a reload / redirect
             wc_checkout_form.detachUnloadEventsOnSubmit();
             try {
               if (result.redirect === "" && "success" === result.result) {
                 wc_checkout_form.$checkout_form
                   .removeClass("processing")
                   .unblock();
-                $.cookie("total", result.total);
-                $.cookie("curr", result.curr);
                 $.cookie("orderId", result.orderId);
-                $.cookie("api", result.api);
                 $("#closeiframebtn").on("click", function () {
                   closeIFrame();
                 });
@@ -632,8 +577,8 @@ jQuery(function ($) {
                   token: result.token,
                   orderId: result.orderId,
                   storeToken: result.storeToken,
-                  successUrl: result.sucessURL,
-                  failureUrl: result.cancelURL,
+                  successUrl: result.successUrl,
+                  failureUrl: result.failureUrl,
                 });
               } else if (
                 "success" === result.result &&
@@ -653,18 +598,15 @@ jQuery(function ($) {
                 throw "Invalid response";
               }
             } catch (err) {
-              // Reload page
-              if (true === result.reload) {
+              if (result.reload === true) {
                 window.location.reload();
                 return;
               }
 
-              // Trigger update in case we need a fresh nonce
-              if (true === result.refresh) {
+              if (result.refresh === true) {
                 $(document.body).trigger("update_checkout");
               }
 
-              // Add new errors
               if (result.messages) {
                 wc_checkout_form.submit_error(result.messages);
               } else {
@@ -672,12 +614,11 @@ jQuery(function ($) {
                   '<div class="woocommerce-error">' +
                     wc_checkout_params.i18n_checkout_error +
                     "</div>"
-                ); // eslint-disable-line max-len
+                );
               }
             }
           },
           error: function (jqXHR, textStatus, errorThrown) {
-            // Detach the unload handler that prevents a reload / redirect
             wc_checkout_form.detachUnloadEventsOnSubmit();
 
             wc_checkout_form.submit_error(
@@ -697,7 +638,7 @@ jQuery(function ($) {
         '<div class="woocommerce-NoticeGroup woocommerce-NoticeGroup-checkout">' +
           error_message +
           "</div>"
-      ); // eslint-disable-line max-len
+      );
       wc_checkout_form.$checkout_form.removeClass("processing").unblock();
       wc_checkout_form.$checkout_form
         .find(".input-text, select, input:checkbox")
@@ -820,13 +761,11 @@ jQuery(function ($) {
               update_shipping_method: false,
             });
 
-            // Remove coupon code from coupon field
             $("form.checkout_coupon").find('input[name="coupon_code"]').val("");
           }
         },
         error: function (jqXHR) {
           if (wc_checkout_params.debug_mode) {
-            /* jshint devel: true */
             console.log(jqXHR.responseText);
           }
         },

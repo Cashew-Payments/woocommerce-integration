@@ -137,8 +137,8 @@ jQuery(document).ready(function (o) {
             token: resp.token,
             orderId: resp.orderId,
             storeToken: resp.storeToken,
-            successUrl: resp.sucessURL,
-            failureUrl: resp.cancelURL,
+            successUrl: resp.successUrl,
+            failureUrl: resp.failureUrl,
           };
           cashew.checkout.load();
         });

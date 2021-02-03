@@ -9,7 +9,7 @@ function processRefund($order_id, $amount = null, $reason = '', $th)
     $order = wc_get_order($order_id);
     $url = $th->api . 'refunds/woocommerce';
 
-    $auth = cashewApiAuth($th, $order->get_payment_method(), $order->get_currency());
+    cashewApiAuth($th, $order->get_payment_method(), $order->get_currency());
     $headers = getHeader($th);
     $body = array(
         "orderId" => $order->get_meta('reference'),
@@ -26,15 +26,12 @@ function processRefund($order_id, $amount = null, $reason = '', $th)
     $res = json_decode($response_body, true);
 
     if (is_wp_error($response)) {
-        error_log('WP_ERROR [cashew Process Refund] ');
         throw new Exception(__('Network connection issue'));
     }
     if (empty($response['body'])) {
-        error_log('Response Body Empty [cashew Process Refund] ');
         throw new Exception(__('Empty response body'));
     }
 
-    // Check for capture success 
     if ($res['status'] == 'success') {
         if (function_exists('wc_add_notice')) {
             wc_add_notice(__('Refund Success: ', 'woothemes') . "Refund complete", 'success');

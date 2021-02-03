@@ -1,7 +1,5 @@
 <?php
-/*
-/* add product widget 
-*/
+
 function add_product_widget($th)
 {
     global $product;
