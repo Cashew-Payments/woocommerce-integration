@@ -1,4 +1,5 @@
 # cashew plugin for Wordpress
+Version 1.0.2
 
 # WooCommerce
 This extension allows you to use cashew as a payment gateway in your WooCommerce store.

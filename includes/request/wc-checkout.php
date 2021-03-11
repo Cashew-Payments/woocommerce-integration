@@ -60,15 +60,16 @@ function get_checkout_payload($order, $th, $type, $addon)
     );
     foreach ($order->get_items() as $item) {
         $product = wc_get_product($item['product_id']);
+        $image_id = $product->get_image_id();
         $lines[] = array(
             "sku" => $product->get_sku(),
             "reference" => $item->get_id(),
-            "title" => $product->get_title(),
-            "upc" => $product->get_sku(),
+            "description" => $product->get_title(),
+            "name" => $product->get_title(),
             "quantity" => $item->get_quantity(),
             "unitPrice" => $product->get_price(),
             "currency" => $order->get_currency(),
-            "image_url" => "",       //$product->get_image(),
+            "image" => wp_get_attachment_image_url($image_id, 'full'),
         );
     }
     $body['items'] = $lines;
