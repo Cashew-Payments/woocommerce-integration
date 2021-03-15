@@ -2,9 +2,9 @@
 
 function add_cart_widget($cart)
 {
+    echo 'HERE';
     global $product, $woocommerce;
     $th = new WC_Cashew_Gateway;    
-echo 'HERE';
     $isSandbox = get_option('woocommerce_cashew_payments_settings')['sandbox'] == 'yes';
     $domain = $isSandbox ? 's3-eu-west-1.amazonaws.com/cdn-sandbox' : 'cdn';
     $price = $product->get_price();
