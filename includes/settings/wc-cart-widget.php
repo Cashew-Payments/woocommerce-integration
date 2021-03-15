@@ -1,5 +1,5 @@
 <?php
-
+echo 'aaa';
 function add_cart_widget($cart)
 {
     echo 'HERE';
