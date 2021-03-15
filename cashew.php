@@ -21,6 +21,23 @@ defined('ABSPATH') || exit;
 
 require __DIR__ . '/includes/settings/wc-cart-widget.php';
 require __DIR__ . '/includes/settings/wc-product-widget.php';
+add_action( 'woocommerce_before_cart_totals' , 'add_cart_widget' );
+function add_cart_widget($cart)
+{
+    echo 'HERE';
+    global $product, $woocommerce;
+    $th = new WC_Cashew_Gateway;    
+    $isSandbox = get_option('woocommerce_cashew_payments_settings')['sandbox'] == 'yes';
+    $domain = $isSandbox ? 's3-eu-west-1.amazonaws.com/cdn-sandbox' : 'cdn';
+    $price = $product->get_price();
+    $language = explode('_', get_locale())[0];
+    $currency = get_woocommerce_currency_symbol();
+    echo $woocommerce->cart->total;
+    echo '<div id="cashew-widget" data-language="' . $language . '" data-amount="' . $price . '" data-currency="' . $currency . '">' .
+        '</div>' .
+        ' <script>(function(w,d,s) {var f=d.getElementsByTagName(s)[0];var a=d.createElement(\'script\');a.async=true;a.src=\'https://'.$domain.'.cashewpayments.com/widgets/woocommerce.widget.min.js\';f.parentNode.insertBefore(a,f);}(window, document, \'script\'));</script> ';
+}
+
 
 add_filter('woocommerce_payment_gateways', 'Cashew_add_gateway_class');
 
