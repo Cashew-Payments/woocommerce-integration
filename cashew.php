@@ -48,7 +48,7 @@ function Cashew_add_gateway_class($gateways)
     return $gateways;
 }
 
-add_action( 'woocommerce_before_cart_totals' , 'add_cart_widget' );
+add_action( 'woocommerce_before_cart_totals' , 'add_coupon_notice' );
 function add_coupon_notice(){echo 'HERE';}
 
 add_action('plugins_loaded', 'Cashew_init_gateway_class');
