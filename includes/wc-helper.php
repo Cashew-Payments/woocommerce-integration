@@ -1,8 +1,12 @@
 <?php
 defined('ABSPATH') || exit;
 
-add_action('woocommerce_before_cart_totals', 'add_cart_widget');
+add_action('woocommerce_before_cart_totals', 'aaa');
 add_action('woocommerce_single_product_summary', 'add_product_widget');
+
+function aaa() {
+    echo 'LADD';
+}
 
 $lang = get_locale();
 
