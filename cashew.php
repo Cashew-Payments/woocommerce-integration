@@ -21,8 +21,8 @@ defined('ABSPATH') || exit;
 
 require __DIR__ . '/includes/settings/wc-cart-widget.php';
 require __DIR__ . '/includes/settings/wc-product-widget.php';
-add_action( 'woocommerce_before_cart_totals' , 'add_cart_widget' );
-function add_cart_widget($cart)
+add_action( 'woocommerce_before_cart_totals' , 'test' );
+function test($cart)
 {
     echo 'HERE';
     // global $product, $woocommerce;
