@@ -2,7 +2,6 @@
 
 function add_cart_widget($cart)
 {
-    echo 'HERE';
     global $product, $woocommerce;
     $th = new WC_Cashew_Gateway;    
 
