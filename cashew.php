@@ -3,7 +3,7 @@
 /**
  * Plugin Name: cashew Payments
  * Description: allow customers to buy now pay later for WooCommerce
- * Version: 1.0.2
+ * Version: 1.0.3
  * Author: cashew
  * Author URI: https://www.cashewpayments.com
  * Developer: Gonçalo Silva Dias
