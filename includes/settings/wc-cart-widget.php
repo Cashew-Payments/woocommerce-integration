@@ -10,7 +10,7 @@ function add_cart_widget($cart)
     $limit = get_option('woocommerce_cashew_payments_settings')['order_maximum'];
     $language = explode('_', get_locale())[0];
     $currency = get_woocommerce_currency_symbol();
-    if ($price <= $limit) {
+    if (floatval($price) <= floatval($limit)) {
         echo '<div id="cashew-widget" data-language="' . $language . '" data-amount="' . $price . '" data-currency="' . $currency . '">' .
         '</div>' .
         ' <script>(function(w,d,s) {var f=d.getElementsByTagName(s)[0];var a=d.createElement(\'script\');a.async=true;a.src=\'https://'.$domain.'.cashewpayments.com/widgets/woocommerce.cart.min.js\';f.parentNode.insertBefore(a,f);}(window, document, \'script\'));</script> ';
