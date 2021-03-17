@@ -12,12 +12,12 @@ function wc_cashew_scripts()
     $isSandbox = get_option('woocommerce_cashew_payments_settings')['sandbox'] == 'yes';
     $domain = $isSandbox ? 's3-eu-west-1.amazonaws.com/cdn-sandbox' : 'cdn';
     if (is_checkout()) {
-        wp_enqueue_script('cashew-checkout', 'https://'.$domain.'.cashewpayments.com/widgets/woocommerce.checkout.min.js', array('jquery'), '1.0.3', true);
+        wp_enqueue_script('cashew-checkout', 'https://'.$domain.'.cashewpayments.com/widgets/woocommerce.checkout.min.js', array('jquery'), '1.0.4', true);
     }
-    wp_enqueue_script('cashew-helper-checkout', $assetsPath . '../assets/js/cashew-checkout.js', array('jquery'), '1.0.3', true);
+    wp_enqueue_script('cashew-helper-checkout', $assetsPath . '../assets/js/cashew-checkout.js', array('jquery'), '1.0.4', true);
     if (is_checkout()) {
         wp_deregister_script('wc-checkout');
-        wp_enqueue_script('wc-checkout', $assetsPath . '../assets/js/woocommerce-checkout.js', array('jquery'), '1.0.3', true);
+        wp_enqueue_script('wc-checkout', $assetsPath . '../assets/js/woocommerce-checkout.js', array('jquery'), '1.0.4', true);
     }
     wp_enqueue_script('jquery');
     wp_localize_script('jquery', 'cashew_ajax', array('ajax_url' => admin_url('admin-ajax.php')));

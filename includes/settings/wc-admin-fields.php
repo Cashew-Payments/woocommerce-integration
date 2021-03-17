@@ -21,7 +21,7 @@ function form_fields($th)
             'title' => 'Description',
             'type' => 'textarea',
             'description' => 'This controls the description which the user sees during checkout',
-            'default' => 'Buy now, pay later with cashew payments',
+            'default' => 'After clicking "Place order" you will be redirected to Cashew Payments to complete your purchase.',
         ),
         'sandbox' => array(
             'title' => 'Sandbox',
