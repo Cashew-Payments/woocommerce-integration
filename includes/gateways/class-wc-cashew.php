@@ -25,7 +25,7 @@ class WC_Cashew_Gateway extends WC_Payment_Gateway
         if (get_locale() == 'ar') {
             $timesch = 'الدفع بالتقسيط بدون فوائد';
         } else {
-            $timesch = 'Pay in installments with zero interest';
+            $timesch = $this->get_description();
         }
         echo '<div id="cover"><span>' . $timesch . '</span></div>';
     }

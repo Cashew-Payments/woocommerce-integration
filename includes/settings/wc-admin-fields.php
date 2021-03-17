@@ -14,14 +14,14 @@ function form_fields($th)
             'title' => 'Title',
             'type' => 'text',
             'description' => 'This controls the title that the user sees during checkout',
-            'default' => 'cashew Payments, buy now, pay later',
+            'default' => 'Buy now, pay later with cashew payments',
             'desc_tip' => true,
         ),
         'description' => array(
             'title' => 'Description',
             'type' => 'textarea',
             'description' => 'This controls the description which the user sees during checkout',
-            'default' => 'cashew Payments, buy now, pay later',
+            'default' => 'Buy now, pay later with cashew payments',
         ),
         'sandbox' => array(
             'title' => 'Sandbox',
