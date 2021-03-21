@@ -10,6 +10,9 @@ class WC_Cashew_Gateway extends WC_Payment_Gateway
 
         add_action('woocommerce_api_wc_cashew_gateway', array($this, 'cashew_response_handler'));
         gatewayParameters($this);
+
+        add_action( 'woocommerce_order_status_cancelled', 'change_status_to_refund');
+        
     }
     public function init_form_fields()
     {
@@ -41,5 +44,9 @@ class WC_Cashew_Gateway extends WC_Payment_Gateway
     public function process_refund($order_id, $amount = null, $reason = '')
     {
         return processRefund($order_id, $amount, $reason, $this);
+    }
+    public function change_status_to_refund( $order_id ){
+        $order = wc_get_order($order_id);
+        processRefund($order_id, $order->get_total() - $order->get_total_refunded(), '', $this);
     }
 }

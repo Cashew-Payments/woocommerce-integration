@@ -31,13 +31,6 @@ function Cashew_add_gateway_class($gateways)
     return $gateways;
 }
 
-add_action( 'woocommerce_order_status_cancelled', 'change_status_to_refund');
-
-function change_status_to_refund( $order_id, $th ){
-    $order = wc_get_order($order_id);
-    processRefund($order_id, $order->get_total() - $order->get_total_refunded(), '', $th);
-}
-
 add_action('plugins_loaded', 'Cashew_init_gateway_class');
 
 
