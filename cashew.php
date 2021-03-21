@@ -35,6 +35,7 @@ add_action( 'woocommerce_order_status_cancelled', 'change_status_to_refund', 10,
 
 function change_status_to_refund( $order_id ){
     $order = wc_get_order($order_id);
+    echo 'HERHEHREHRHEHREHRHEHR';
     echo $order->get_total() - $order->get_total_refunded();
 }
 
