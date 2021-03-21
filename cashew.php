@@ -31,13 +31,11 @@ function Cashew_add_gateway_class($gateways)
     return $gateways;
 }
 
-add_action( 'woocommerce_order_status_cancelled', 'change_status_to_refund', 10, 1 );
+// add_action( 'woocommerce_order_status_cancelled', 'change_status_to_refund', 10, 1 );
 
-function change_status_to_refund( $order_id ){
-    $order = wc_get_order($order_id);
-    echo 'HEREHREHR '. $order->get_total() .' '. $order->get_total_refunded();
-    error_log("Exception [WP_Error] " . $order->get_total() - $order->get_total_refunded());
-}
+// function change_status_to_refund( $order_id ){
+//     $order = wc_get_order($order_id);
+// }
 
 add_action('plugins_loaded', 'Cashew_init_gateway_class');
 
