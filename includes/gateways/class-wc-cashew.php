@@ -11,7 +11,7 @@ class WC_Cashew_Gateway extends WC_Payment_Gateway
         add_action('woocommerce_api_wc_cashew_gateway', array($this, 'cashew_response_handler'));
         gatewayParameters($this);
 
-        add_action( 'woocommerce_order_status_cancelled', 'change_status_to_refund');
+        add_action( 'woocommerce_order_status_cancelled', array($this, 'change_status_to_refund'));
         
     }
     public function init_form_fields()
