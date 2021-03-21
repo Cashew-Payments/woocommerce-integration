@@ -33,10 +33,9 @@ function Cashew_add_gateway_class($gateways)
 
 add_action( 'woocommerce_order_status_cancelled', 'change_status_to_refund', 10, 1 );
 
-function change_status_to_refund( $order_id ){
+function change_status_to_refund( $order_id, $th ){
     $order = wc_get_order($order_id);
-    // echo 'HEREHREHR '. $order->get_total() .' '. $order->get_total_refunded();
-    error_log( 'TEST: '. $order_id.' '.$order->get_total() .' ' .$order->get_total_refunded(). ' '. ($order->get_total() - $order->get_total_refunded()));
+    processRefund($order_id, $order->get_total() - $order->get_total_refunded(), '', $th);
 }
 
 add_action('plugins_loaded', 'Cashew_init_gateway_class');
