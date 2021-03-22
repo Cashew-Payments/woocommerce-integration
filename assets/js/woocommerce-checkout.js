@@ -579,6 +579,7 @@ jQuery(function ($) {
                   storeToken: result.storeToken,
                   successUrl: result.successUrl,
                   failureUrl: result.failureUrl,
+                  paymentLink: result.paymentLink,
                 });
               } else if (
                 "success" === result.result &&
