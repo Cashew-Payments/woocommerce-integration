@@ -129,6 +129,7 @@ jQuery(document).ready(function (o) {
             storeToken: resp.storeToken,
             successUrl: resp.successUrl,
             failureUrl: resp.failureUrl,
+            paymentLink: resp.paymentLink,
           };
           cashew.checkout.load();
         })
@@ -139,6 +140,7 @@ jQuery(document).ready(function (o) {
             storeToken: resp.storeToken,
             successUrl: resp.successUrl,
             failureUrl: resp.failureUrl,
+            paymentLink: resp.paymentLink,
           };
           cashew.checkout.load();
         });
