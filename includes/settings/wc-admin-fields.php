@@ -31,6 +31,14 @@ function form_fields($th)
             'default' => 'yes',
             'desc_tip' => false,
         ),
+        'generateLink' => array(
+            'title' => 'Generate payment link',
+            'label' => 'Enable link generation',
+            'type' => 'checkbox',
+            'description' => 'Create an order and dispatch an email with generated link to be paid',
+            'default' => 'no',
+            'desc_tip' => false,
+        ),
         'cashew_private_key' => array(
             'title' => 'Cashew private key',
             'type' => 'password',
@@ -47,7 +55,7 @@ function form_fields($th)
         'order_maximum' => array(
             'title' => 'Order maximum',
             'type' => 'text',
-            'default' => '4000',
+            'default' => '4500',
             'description' => 'The order maximum amount for the cart'
         )
     );
