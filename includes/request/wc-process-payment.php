@@ -29,6 +29,7 @@ function processPayment($order_id, $th, $type = null, $addon)
     if ($order->get_meta('reference')) {
         return array(
             'redirect' => '',
+            'paymentLink' => get_option('woocommerce_cashew_payments_settings')['generateLink'] == 'yes',
             'result' => 'success', 
             'token' => $order->get_meta('token'), 
             'storeToken' => $th->token, 
@@ -62,6 +63,7 @@ function processPayment($order_id, $th, $type = null, $addon)
             $order->save();
             return array(
                 'redirect' => '',
+                'paymentLink' => get_option('woocommerce_cashew_payments_settings')['generateLink'] == 'yes',
                 'result' => 'success', 
                 'token' => $response_body_arr['data']['token'], 
                 'storeToken' => $th->token, 
