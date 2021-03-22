@@ -88,7 +88,8 @@ function getHeader($th)
         'Accept' => 'application/json; indent=4',
         'Content-Type' => 'application/json',
         'Access-Control-Allow-Origin' => '*',
-        'Authorization' => $th->token
+        'Authorization' => $th->token,
+        'PaymentLink' => get_option('woocommerce_cashew_payments_settings')['generateLink'] == 'yes'
     );
     return $headers;
 }
