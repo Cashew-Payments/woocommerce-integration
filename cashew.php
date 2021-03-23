@@ -22,7 +22,7 @@ defined('ABSPATH') || exit;
 require __DIR__ . '/includes/settings/wc-cart-widget.php';
 require __DIR__ . '/includes/settings/wc-product-widget.php';
 
-echo 'HERE'.get_option( 'woocommerce_manage_stock', 'yes' );
+error_log(get_option( 'woocommerce_hold_stock_minutes' ) > 0);
 
 add_filter('woocommerce_payment_gateways', 'Cashew_add_gateway_class');
 
