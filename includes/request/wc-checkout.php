@@ -89,8 +89,8 @@ function getHeader($th)
         'Content-Type' => 'application/json',
         'Access-Control-Allow-Origin' => '*',
         'Authorization' => $th->token,
-        'PaymentLink' => get_option('woocommerce_cashew_payments_settings')['generateLink'] == 'yes',
-        'HoldStockMinutes' => get_option( 'woocommerce_hold_stock_minutes' ),
+        'paymentLink' => get_option('woocommerce_cashew_payments_settings')['generateLink'] == 'yes',
+        'holdStockMinutes' => get_option( 'woocommerce_hold_stock_minutes' ),
     );
     return $headers;
 }
