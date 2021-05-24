@@ -60,4 +60,16 @@ function form_fields($th)
         )
     );
     $th->form_fields += $widget;
+
+    $allowed_currencies = array(
+        'allowed_currencies' => array(
+            'title' => 'Allowed Currencies',
+            'type' => 'multiselect',
+            'options' => array(
+                'SAR' => __('Saudi Riyal'),
+                'AED' => __('United Arab Emirates Dirham')
+            )
+        )
+    );
+    $th->form_fields += $allowed_currencies;
 }

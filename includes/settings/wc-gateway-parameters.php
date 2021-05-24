@@ -20,6 +20,15 @@ function gatewayParameters($th)
     $th->title = $th->get_option('title', 'Shop now, Pay later');
     $th->description = $th->get_option('description', 'Shop now, Pay later');
     $th->enabled = $th->get_option('enabled', 'yes');
+
+    if ($th->enabled === 'yes') {
+        $currency = get_woocommerce_currency();
+        $allowed_currencies = !empty($th->get_option('allowed_currencies')) ? $th->get_option('allowed_currencies') : [];
+        if(!in_array($currency, $allowed_currencies)) {
+            $th->enabled = 'no';
+        }
+    }
+
     $th->sandbox = $th->get_option('sandbox', 'yes') === 'yes';
     $th->order_min = $th->get_option('order_minimum', '');
     $th->order_max = $th->get_option('order_maximum', '');
